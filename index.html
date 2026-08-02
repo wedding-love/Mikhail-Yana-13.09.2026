@@ -118,10 +118,11 @@
             font-size: 1rem;
             color: #1c1c1c;
         }
+        /* СЕРДЦЕ МЕНЬШЕ, ОБВОДКА ПО РАЗМЕРУ */
         .calendar-grid .day.highlight::before {
             content: "♡";
             position: absolute;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 100;
             color: #1c1c1c;
             opacity: 0.5;
@@ -129,7 +130,7 @@
         }
         @keyframes pulse-heart {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+            50% { transform: scale(1.06); }
         }
         .calendar-grid .day.other-month {
             color: #ccc;
@@ -157,7 +158,7 @@
         #timer div span {
             transition: all 0.3s ease;
         }
-        /* АНИМАЦИИ AOS */
+        /* АНИМАЦИИ AOS — текст не исчезает после появления */
         [data-aos] {
             pointer-events: none;
         }
@@ -234,7 +235,12 @@
                 padding: 1.5rem;
             }
         }
-        /* ЧЕКБОКСЫ ДЛЯ НАПИТКОВ */
+        /* ЧЕКБОКСЫ ДЛЯ НАПИТКОВ — В ОДИН СТОЛБИК */
+        .drink-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
         .drink-checkbox {
             display: flex;
             align-items: center;
@@ -280,6 +286,130 @@
             .separator-gap {
                 margin-top: 1.5rem;
                 margin-bottom: 1.5rem;
+            }
+        }
+
+        /* === МОДАЛЬНОЕ ОКНО В СТИЛЕ САЙТА === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 44, 44, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #fcfbf9;
+            border: 1px solid #d1cdc4;
+            padding: 2.5rem;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+        .modal-content .close-btn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .modal-content .close-btn:hover {
+            color: #1c1c1c;
+        }
+        .modal-content .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+        .modal-content .modal-divider {
+            border-top: 1px solid #d1cdc4;
+            margin: 1rem 0;
+        }
+        .modal-content .modal-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .modal-content .modal-row .label {
+            color: #888;
+            font-weight: 400;
+        }
+        .modal-content .modal-row .value {
+            text-align: right;
+            max-width: 60%;
+        }
+        .modal-content .modal-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1.5rem;
+            background: #1c1c1c;
+            color: #fff;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .modal-content .modal-btn:hover {
+            background: #3a3a3a;
+        }
+        /* СТИЛЬ ПОЛЯ ВВОДА КАК ВЕЗДЕ */
+        .guest-input {
+            width: 100%;
+            border-bottom: 1px solid #d1cdc4;
+            padding: 0.5rem 0;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: #2c2c2c;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+        .guest-input:focus {
+            border-color: #1c1c1c;
+        }
+        .guest-input::placeholder {
+            color: #bbb;
+            font-weight: 300;
+        }
+        @media (max-width: 640px) {
+            .guest-input {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -490,7 +620,7 @@
                 <form id="guestForm" class="space-y-5 sm:space-y-6">
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
                         <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
-                        <input type="text" id="name" required class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm sm:text-base" />
+                        <input type="text" id="name" required class="guest-input" placeholder="Иванов Иван" />
                     </div>
 
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
@@ -507,7 +637,7 @@
                         </div>
                     </div>
 
-                    <!-- +1 С ВЫПАДАЮЩИМ ПОЛЕМ -->
+                    <!-- +1 — ИЗНАЧАЛЬНО ОЧИЩЕНО (ни один не выбран) -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
                         <span class="block serif text-lg mb-3">Будете ли вы с +1?</span>
                         <div class="space-y-2 font-light text-sm sm:text-base">
@@ -516,20 +646,20 @@
                                 <span>Да</span>
                             </label>
                             <label class="flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="plusone" value="Нет" class="accent-black w-4 h-4 plusone-radio" checked />
+                                <input type="radio" name="plusone" value="Нет" class="accent-black w-4 h-4 plusone-radio" />
                                 <span>Нет</span>
                             </label>
                         </div>
                         <div id="plusoneField" class="plusone-field">
                             <label class="block serif text-base mb-2" for="plusoneName">Имя и фамилия гостя</label>
-                            <input type="text" id="plusoneName" placeholder="Введите имя и фамилию" class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm" />
+                            <input type="text" id="plusoneName" placeholder="Петров Петр" class="guest-input" />
                         </div>
                     </div>
 
-                    <!-- НАПИТКИ (список с чекбоксами) -->
+                    <!-- НАПИТКИ — В ОДИН СТОЛБИК -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
                         <span class="block serif text-lg mb-3">Предпочтения по напиткам (можно выбрать несколько)</span>
-                        <div class="grid grid-cols-2 gap-1">
+                        <div class="drink-list">
                             <label class="drink-checkbox">
                                 <input type="checkbox" name="drinks" value="Вино" />
                                 <span>Вино</span>
@@ -570,11 +700,24 @@
 
     </main>
 
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" id="modalCloseBtn">✕</button>
+            <div class="modal-title">✨ Ваш ответ получен</div>
+            <div class="modal-divider"></div>
+            <div id="modalBody">
+                <!-- сюда будет подставлен результат -->
+            </div>
+            <button class="modal-btn" id="modalCloseBtn2">Закрыть</button>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
     </script>
     <script>
         AOS.init({
-            once: false,
+            once: true, // ← ТЕКСТ ПОЯВЛЯЕТСЯ ОДИН РАЗ И НЕ ИСЧЕЗАЕТ
             offset: 80,
             duration: 800,
             easing: 'ease-out-cubic',
@@ -607,7 +750,7 @@
         updateTimer();
         setInterval(updateTimer, 1000);
 
-        // ПОКАЗАТЬ/СКРЫТЬ ПОЛЕ ДЛЯ +1
+        // +1: ПОКАЗАТЬ/СКРЫТЬ ПОЛЕ
         document.querySelectorAll('.plusone-radio').forEach(function(radio) {
             radio.addEventListener('change', function() {
                 const field = document.getElementById('plusoneField');
@@ -619,50 +762,56 @@
             });
         });
 
+        // МОДАЛЬНОЕ ОКНО
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalBody = document.getElementById('modalBody');
+
+        function openModal(data) {
+            modalBody.innerHTML = data;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+        document.getElementById('modalCloseBtn2').addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
         // АНКЕТА
         document.getElementById('guestForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Собираем выбранные напитки
+            const name = document.getElementById('name').value.trim() || 'Не указано';
+            const attendance = document.querySelector('input[name="attendance"]:checked');
+            const attendanceValue = attendance ? attendance.value : 'Не выбрано';
+
+            const plusone = document.querySelector('input[name="plusone"]:checked');
+            const plusoneValue = plusone ? plusone.value : 'Не выбрано';
+            const plusoneName = document.getElementById('plusoneName').value.trim();
+
             const drinkCheckboxes = document.querySelectorAll('input[name="drinks"]:checked');
             const drinks = [];
             drinkCheckboxes.forEach(function(cb) {
                 drinks.push(cb.value);
             });
+            const drinksValue = drinks.length > 0 ? drinks.join(', ') : 'Не выбраны';
 
-            // Собираем данные
-            const name = document.getElementById('name').value;
-            const attendance = document.querySelector('input[name="attendance"]:checked');
-            const plusone = document.querySelector('input[name="plusone"]:checked');
-            const plusoneName = document.getElementById('plusoneName').value;
+            let html = '';
+            html += '<div class="modal-row"><span class="label">👤 Имя</span><span class="value">' + name + '</span></div>';
+            html += '<div class="modal-row"><span class="label">📌 Присутствие</span><span class="value">' + attendanceValue + '</span></div>';
+            html += '<div class="modal-row"><span class="label">👫 +1</span><span class="value">' + plusoneValue + (plusoneValue === 'Да' && plusoneName ? ' (' + plusoneName + ')' : '') + '</span></div>';
+            html += '<div class="modal-row"><span class="label">🍷 Напитки</span><span class="value">' + drinksValue + '</span></div>';
 
-            // Формируем сообщение
-            let message = '✅ Новая заявка с сайта!\n\n';
-            message += '👤 Имя: ' + name + '\n';
-            message += '📌 Присутствие: ' + (attendance ? attendance.value : 'Не указано') + '\n';
-            message += '👫 +1: ' + (plusone ? plusone.value : 'Не указано');
-            if (plusone && plusone.value === 'Да' && plusoneName) {
-                message += ' (' + plusoneName + ')';
-            }
-            message += '\n🍷 Напитки: ' + (drinks.length > 0 ? drinks.join(', ') : 'Не выбраны');
-
-            // Показываем уведомление
-            alert(message);
-
-            const btn = this.querySelector('button');
-            const originalText = btn.innerText;
-
-            btn.innerText = 'Отправлено!';
-            btn.classList.add('bg-green-700');
-            btn.classList.remove('bg-black', 'hover:bg-gray-800');
-
-            setTimeout(() => {
-                this.reset();
-                document.getElementById('plusoneField').classList.remove('visible');
-                btn.innerText = originalText;
-                btn.classList.remove('bg-green-700');
-                btn.classList.add('bg-black', 'hover:bg-gray-800');
-            }, 3000);
+            openModal(html);
         });
     </script>
 </body>
