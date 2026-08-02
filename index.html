@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Свадебный Вестник | Яна & Михаил</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ТОЛЬКО ДВА ШРИФТА */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fcfbf9;
+            color: #2c2c2c;
+        }
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #111;
+        }
+        .separator {
+            border-top: 1px solid #d1cdc4;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .separator::after {
+            content: "✦";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fcfbf9;
+            padding: 0 10px;
+            font-size: 14px;
+            color: #888;
+        }
+        .newspaper-border {
+            border: 1px solid #d1cdc4;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .newspaper-border:hover {
+            border-color: #888;
+        }
+        @media (max-width: 640px) {
+            .newspaper-border {
+                padding: 1rem;
+            }
+        }
+        /* Календарь */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+        .calendar-grid .day {
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-radius: 50%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+        .calendar-grid .day:not(.empty):not(.weekday):not(.highlight):hover {
+            background: #f0ede8;
+            cursor: default;
+        }
+        .calendar-grid .day.weekday {
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+        }
+        .calendar-grid .day.empty {
+            visibility: hidden;
+        }
+        .calendar-grid .day.highlight {
+            background: #1c1c1c;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(28, 28, 28, 0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(28, 28, 28, 0.05); }
+        }
+        .calendar-grid .day.other-month {
+            color: #ccc;
+        }
+        /* Таймер */
+        #timer div span {
+            transition: all 0.3s ease;
+        }
+        /* Плавное появление для AOS */
+        [data-aos] {
+            pointer-events: none;
+        }
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-8 py-10 md:py-16">
+
+        <!-- ШАПКА -->
+        <header class="text-center border-b-[3px] border-t-[3px] border-black py-6 mb-10" data-aos="fade-down" data-aos-duration="1000">
+            <div class="flex justify-between items-center text-xs md:text-sm uppercase tracking-widest font-light mb-4">
+                <span>Минск</span>
+                <span>Специальный Выпуск</span>
+                <span>Сентябрь 2026</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-tight mb-2">Вестник Любви</h1>
+            <p class="text-lg md:text-xl italic serif text-gray-700">Официальное издание, посвященное созданию новой семьи</p>
+        </header>
+
+        <!-- ПРИГЛАШЕНИЕ + ФОТО -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="md:col-span-8">
+                <div class="aspect-video bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
+                    <img src="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" alt="Яна и Михаил" class="w-full h-full object-cover" />
+                    <div class="absolute bottom-2 right-2 text-white text-xs opacity-70 bg-black/50 px-2 py-1 rounded">Фото: из личного архива</div>
+                </div>
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-center">
+                <h2 class="text-3xl md:text-4xl mb-4 leading-tight" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                    <span class="font-bold">Яна</span> &amp; <span class="font-bold">Михаил</span>
+                </h2>
+                <p class="text-xl serif italic mb-3 text-gray-800" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">11 сентября 2026</p>
+                <p class="font-light text-sm md:text-base leading-relaxed drop-cap mb-4" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
+                    Дорогие гости! Совсем скоро мы скажем друг другу самые важные слова, и нам будет очень приятно, если в этот день вы будете рядом с нами.
+                </p>
+                <p class="font-light text-sm md:text-base leading-relaxed" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
+                    Обещаем много улыбок, объятий, вкусной еды и совсем немного слёз — только от счастья!
+                </p>
+            </div>
+        </section>
+
+        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- КАЛЕНДАРЬ -->
+        <section class="max-w-2xl mx-auto my-12 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="serif text-3xl md:text-4xl mb-2">Сентябрь 2026</h2>
+            <p class="font-light text-gray-500 text-sm mb-6">Отметьте этот день в своём календаре</p>
+            <div class="calendar-grid max-w-sm mx-auto">
+                <!-- Дни недели -->
+                <div class="day weekday">Пн</div>
+                <div class="day weekday">Вт</div>
+                <div class="day weekday">Ср</div>
+                <div class="day weekday">Чт</div>
+                <div class="day weekday">Пт</div>
+                <div class="day weekday">Сб</div>
+                <div class="day weekday">Вс</div>
+
+                <!-- 1 сентября — вторник -->
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day highlight">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+            </div>
+            <p class="font-light text-sm text-gray-500 mt-4 serif italic">✦ День, когда начинается наша история ✦</p>
+        </section>
+
+        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- МЕСТО ПРОВЕДЕНИЯ -->
+        <section class="text-center my-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="serif text-3xl mb-4">Место проведения</h2>
+            <p class="font-light text-lg">Ресторан «Название»</p>
+            <p class="font-light text-gray-600">Минск, ул. Примерная, 10</p>
+            <p class="font-light text-sm text-gray-400 mt-2">Банкетный зал «Любовь»</p>
+        </section>
+
+        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- ТАЙМИНГ -->
+        <section class="my-16 max-w-2xl mx-auto text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="text-4xl mb-10">Программа торжества</h2>
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gray-300">
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-xs font-serif">15:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-4">
+                        <h3 class="serif text-2xl mb-1">Сбор гостей</h3>
+                        <p class="font-light text-gray-600 text-sm">Приветственный фуршет, шампанское и лёгкая музыка.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-xs font-serif">16:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-4">
+                        <h3 class="serif text-2xl mb-1">Церемония</h3>
+                        <p class="font-light text-gray-600 text-sm">Трогательный момент обмена клятвами и кольцами.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="300">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-xs font-serif">17:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-4">
+                        <h3 class="serif text-2xl mb-1">Праздничный ужин</h3>
+                        <p class="font-light text-gray-600 text-sm">Вкусная еда, танцы и душевные разговоры.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-left" data-aos-duration="600" data-aos-delay="400">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-xs font-serif">23:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-4">
+                        <h3 class="serif text-2xl mb-1">Завершение</h3>
+                        <p class="font-light text-gray-600 text-sm">Прощаемся до новых встреч!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- ДРЕСС-КОД + ПОЖЕЛАНИЯ -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-10 my-12">
+            <div class="newspaper-border flex flex-col items-center" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                <h3 class="serif text-3xl mb-4 text-center">Дресс-код</h3>
+                <p class="font-light text-center text-base md:text-lg mb-4">Итальянский стиль</p>
+                <p class="font-light text-sm text-center text-gray-600 max-w-xs mx-auto">
+                    Вдохновение — солнечная Италия: элегантность, лёгкость и страсть.
+                    Пастельные тона, льняные костюмы, струящиеся платья.
+                    Главное — чтобы вы чувствовали себя прекрасно!
+                </p>
+                <div class="flex justify-center mt-4 w-full">
+                    <img src="image_2026-08-02_16-49-26.png" alt="Итальянский стиль" class="max-h-64 rounded shadow-md w-full object-cover" />
+                </div>
+            </div>
+
+            <div class="newspaper-border flex flex-col justify-center" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                <h3 class="serif text-3xl mb-4 text-center">Пожелания</h3>
+                <p class="font-light text-sm md:text-base leading-relaxed text-center">
+                    Мы очень ценим ваше внимание и тёплые пожелания. Если вы захотите дополнить подарок, вместо букета цветов будем рады бутылочке хорошего вина или другого любимого напитка — она будет радовать нас гораздо дольше.
+                </p>
+            </div>
+        </section>
+
+        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- ТАЙМЕР -->
+        <section class="text-center my-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="serif text-3xl mb-6">До нашей свадьбы осталось</h2>
+            <div id="timer" class="flex justify-center gap-6 md:gap-10 text-center">
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="100">
+                    <span id="days" class="block text-4xl md:text-6xl font-light serif">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Дней</span>
+                </div>
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="200">
+                    <span id="hours" class="block text-4xl md:text-6xl font-light serif">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Часов</span>
+                </div>
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="300">
+                    <span id="minutes" class="block text-4xl md:text-6xl font-light serif">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Минут</span>
+                </div>
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="400">
+                    <span id="seconds" class="block text-4xl md:text-6xl font-light serif">00</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-500">Секунд</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- АНКЕТА -->
+        <section class="max-w-xl mx-auto my-20" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <div class="border border-gray-300 p-8 md:p-12 bg-white shadow-sm">
+                <h2 class="text-3xl text-center mb-2">Анкета гостя</h2>
+                <p class="text-center font-light text-sm text-gray-500 mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
+
+                <form id="guestForm" class="space-y-6">
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
+                        <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
+                        <input type="text" id="name" required class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light" />
+                    </div>
+
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
+                        <span class="block serif text-lg mb-3">Сможете ли вы присутствовать?</span>
+                        <div class="space-y-2 font-light">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" name="attendance" value="Да, с удовольствием" class="accent-black w-4 h-4" required />
+                                <span>Да, с удовольствием буду</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" name="attendance" value="К сожалению, не смогу" class="accent-black w-4 h-4" />
+                                <span>К сожалению, не смогу</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
+                        <label class="block serif text-lg mb-2" for="plusone">Будете ли вы с +1?</label>
+                        <input type="text" id="plusone" placeholder="Да / Нет, или укажите имя сопровождающего" class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm" />
+                    </div>
+
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
+                        <label class="block serif text-lg mb-2" for="drinks">Предпочтения по напиткам</label>
+                        <input type="text" id="drinks" placeholder="Вино, шампанское, виски или б/а напитки..." class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm" />
+                    </div>
+
+                    <button type="submit" class="w-full bg-black text-white font-serif uppercase tracking-widest py-4 mt-4 hover:bg-gray-800 transition duration-300 text-sm" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
+                        Отправить ответ
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 border-t border-gray-300 mt-12" data-aos="fade-in" data-aos-duration="800">
+            <p class="font-serif italic text-gray-500">До встречи на нашем празднике!</p>
+        </footer>
+
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script>
+        // ИНИЦИАЛИЗАЦИЯ AOS
+        AOS.init({
+            once: false, // Анимация срабатывает каждый раз при скролле
+            offset: 60, // Отступ от низа экрана до старта анимации
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // ТАЙМЕР ДО 11 СЕНТЯБРЯ 2026
+        function updateTimer() {
+            const wedding = new Date('September 11, 2026 15:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = wedding - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // АНКЕТА
+        document.getElementById('guestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerText;
+
+            btn.innerText = 'Отправлено!';
+            btn.classList.add('bg-green-700');
+            btn.classList.remove('bg-black', 'hover:bg-gray-800');
+
+            setTimeout(() => {
+                this.reset();
+                btn.innerText = originalText;
+                btn.classList.remove('bg-green-700');
+                btn.classList.add('bg-black', 'hover:bg-gray-800');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
