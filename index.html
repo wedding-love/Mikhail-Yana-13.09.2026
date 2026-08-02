@@ -157,14 +157,14 @@
         #timer div span {
             transition: all 0.3s ease;
         }
-        /* АНИМАЦИИ AOS — текст не исчезает после появления */
+        /* АНИМАЦИИ AOS */
         [data-aos] {
             pointer-events: none;
         }
         [data-aos].aos-animate {
             pointer-events: auto;
         }
-        /* ДРЕСС-КОД ФОТО — УВЕЛИЧЕНО ЕЩЕ БОЛЬШЕ */
+        /* ДРЕСС-КОД ФОТО */
         .dresscode-img {
             max-height: 900px;
             width: auto;
@@ -183,7 +183,26 @@
                 max-height: 450px;
             }
         }
-        /* ОДИНАКОВЫЕ ЗАГОЛОВКИ ВО ВСЕХ БЛОКАХ */
+        /* ФОТО ЛОКАЦИИ */
+        .location-img {
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: cover;
+            margin-top: 1rem;
+        }
+        @media (max-width: 768px) {
+            .location-img {
+                max-height: 300px;
+            }
+        }
+        @media (max-width: 480px) {
+            .location-img {
+                max-height: 220px;
+            }
+        }
+        /* ОДИНАКОВЫЕ ЗАГОЛОВКИ */
         .section-title {
             font-size: 2rem;
             line-height: 1.2;
@@ -234,7 +253,7 @@
                 padding: 1.5rem;
             }
         }
-        /* ЧЕКБОКСЫ ДЛЯ НАПИТКОВ — В ОДИН СТОЛБИК */
+        /* ЧЕКБОКСЫ */
         .drink-list {
             display: flex;
             flex-direction: column;
@@ -255,7 +274,7 @@
             accent-color: #1c1c1c;
             cursor: pointer;
         }
-        /* ПОЛЕ ДЛЯ +1 (скрыто по умолчанию) */
+        /* ПОЛЕ ДЛЯ +1 */
         .plusone-field {
             display: none;
             margin-top: 0.75rem;
@@ -265,7 +284,7 @@
         .plusone-field.visible {
             display: block;
         }
-        /* ПОЛЕ ДЛЯ "ДРУГОЕ" В НАПИТКАХ */
+        /* ПОЛЕ ДЛЯ "ДРУГОЕ" */
         .drink-other-field {
             display: none;
             margin-top: 0.75rem;
@@ -273,7 +292,7 @@
         .drink-other-field.visible {
             display: block;
         }
-        /* ОДИНАКОВЫЕ ОТСТУПЫ МЕЖДУ БЛОКАМИ */
+        /* ОТСТУПЫ */
         .section-gap {
             margin-top: 3rem;
             margin-bottom: 3rem;
@@ -284,7 +303,6 @@
                 margin-bottom: 2rem;
             }
         }
-        /* РАЗДЕЛИТЕЛИ С ОДИНАКОВЫМИ ОТСТУПАМИ */
         .separator-gap {
             margin-top: 2.5rem;
             margin-bottom: 2.5rem;
@@ -394,7 +412,7 @@
         .modal-content .modal-btn:hover {
             background: #3a3a3a;
         }
-        /* СТИЛЬ ПОЛЯ ВВОДА — ОДИНАКОВЫЙ ДЛЯ ВСЕХ */
+        /* ПОЛЯ ВВОДА */
         .guest-input {
             width: 100%;
             border-bottom: 1px solid #d1cdc4;
@@ -419,13 +437,10 @@
                 font-size: 0.85rem;
             }
         }
-
-        /* ОТСТУП ДЛЯ ПОЛЕЙ ВВОДА ПОД ТЕКСТОМ ВОПРОСА */
         .field-group {
             margin-top: 0.5rem;
         }
-
-        /* ВЫРАВНИВАНИЕ ТЕКСТА В ПРИГЛАШЕНИИ */
+        /* ПРИГЛАШЕНИЕ */
         .invitation-text {
             text-align: left;
         }
@@ -434,8 +449,6 @@
                 text-align: center;
             }
         }
-
-        /* ИМЕНА MIKHAIL & YANA — ВТОРОЙ ШРИФТ */
         .names-title {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
@@ -445,8 +458,7 @@
             font-weight: 400;
             font-size: 0.8em;
         }
-
-        /* ФОТО "ИЗ ЛИЧНОГО АРХИВА" — ТОЛЬКО ТЕКСТ, БЕЗ ОБВОДКИ */
+        /* ФОТО "ИЗ ЛИЧНОГО АРХИВА" */
         .photo-credit {
             position: absolute;
             bottom: 0.5rem;
@@ -489,7 +501,6 @@
             <div class="md:col-span-7">
                 <div class="aspect-[4/3] bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
                     <img src="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" alt="Mikhail and Yana" class="w-full h-full object-cover" />
-                    <!-- ТОЛЬКО ТЕКСТ, БЕЗ ОБВОДКИ -->
                     <div class="photo-credit">Фото: из личного архива</div>
                 </div>
             </div>
@@ -556,15 +567,21 @@
 
         <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
-        <!-- МЕСТО ПРОВЕДЕНИЯ -->
+        <!-- МЕСТО ПРОВЕДЕНИЯ С ФОТО ЛОКАЦИИ -->
         <section class="text-center my-12 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <h2 class="section-title mb-4">Место проведения</h2>
             <p class="body-text text-lg">Ресторан «Название»</p>
             <p class="body-text text-gray-600">Минск, ул. Примерная, 10</p>
-            <p class="body-text text-sm text-gray-400 mt-1 mb-6">Банкетный зал «Любовь»</p>
-            <a href="https://maps.google.com/?q=Минск+ул+Примерная+10" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
-                Открыть на карте
-            </a>
+            <p class="body-text text-sm text-gray-400 mt-1 mb-4">Банкетный зал «Любовь»</p>
+            <!-- ФОТО ЛОКАЦИИ -->
+            <div class="flex justify-center w-full max-w-2xl mx-auto">
+                <img src="image_2026-08-02_18-03-137.png" alt="Ресторан «Название»" class="location-img shadow-md" />
+            </div>
+            <div class="mt-4">
+                <a href="https://maps.google.com/?q=Минск+ул+Примерная+10" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+                    Открыть на карте
+                </a>
+            </div>
         </section>
 
         <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
@@ -674,7 +691,6 @@
                 <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
 
                 <form id="guestForm" class="space-y-5 sm:space-y-6">
-                    <!-- ИМЯ И ФАМИЛИЯ -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
                         <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
                         <div class="field-group">
@@ -682,7 +698,6 @@
                         </div>
                     </div>
 
-                    <!-- ПРИСУТСТВИЕ -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
                         <span class="block serif text-lg mb-3">Сможете ли вы присутствовать?</span>
                         <div class="space-y-2 font-light text-sm sm:text-base">
@@ -697,7 +712,6 @@
                         </div>
                     </div>
 
-                    <!-- +1 -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
                         <span class="block serif text-lg mb-3">Будете ли вы с +1?</span>
                         <div class="space-y-2 font-light text-sm sm:text-base">
@@ -718,7 +732,6 @@
                         </div>
                     </div>
 
-                    <!-- НАПИТКИ -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
                         <span class="block serif text-lg mb-3">Предпочтения по напиткам (можно выбрать несколько)</span>
                         <div class="drink-list">
@@ -755,7 +768,6 @@
                         </div>
                     </div>
 
-                    <!-- КНОПКА ОТПРАВИТЬ -->
                     <button type="submit" class="w-full bg-black text-white font-serif uppercase tracking-widest py-4 mt-2 hover:bg-gray-800 transition duration-300 text-xs sm:text-sm" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
                         Отправить ответ
                     </button>
@@ -775,9 +787,7 @@
             <button class="close-btn" id="modalCloseBtn">✕</button>
             <div class="modal-title">✨ Ваш ответ получен</div>
             <div class="modal-divider"></div>
-            <div id="modalBody">
-                <!-- сюда будет подставлен результат -->
-            </div>
+            <div id="modalBody"></div>
             <button class="modal-btn" id="modalCloseBtn2">Закрыть</button>
         </div>
     </div>
@@ -819,7 +829,7 @@
         updateTimer();
         setInterval(updateTimer, 1000);
 
-        // +1: ПОКАЗАТЬ/СКРЫТЬ ПОЛЕ
+        // +1
         document.querySelectorAll('.plusone-radio').forEach(function(radio) {
             radio.addEventListener('change', function() {
                 const field = document.getElementById('plusoneField');
@@ -831,7 +841,7 @@
             });
         });
 
-        // "ДРУГОЕ" В НАПИТКАХ: ПОКАЗАТЬ/СКРЫТЬ ПОЛЕ
+        // "ДРУГОЕ"
         document.getElementById('drinkOtherCheckbox').addEventListener('change', function() {
             const field = document.getElementById('drinkOtherField');
             if (this.checked) {
