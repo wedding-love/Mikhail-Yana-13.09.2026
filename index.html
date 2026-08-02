@@ -1,11 +1,11 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Свадебный Вестник | Mikhail & Yana</title>
 
-    <!-- Open Graph / Социальные сети — для отображения фото в ссылке -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Свадебный Вестник | Mikhail & Yana" />
     <meta property="og:description" content="Приглашаем вас на нашу свадьбу 11 сентября 2026" />
     <meta property="og:image" content="https://wedding-love.github.io/Mikhail-Yana-11.09.2026/69A9AE86-4329-4036-AC07-9111D8673305%20-%20Яна%20Яркина.jpeg" />
@@ -36,10 +36,7 @@
             color: #2c2c2c;
             overflow-x: hidden;
         }
-        h1,
-        h2,
-        h3,
-        .serif {
+        h1, h2, h3, .serif {
             font-family: 'Playfair Display', serif;
         }
         .drop-cap::first-letter {
@@ -53,7 +50,7 @@
         }
         .separator {
             border-top: 1px solid #d1cdc4;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
             position: relative;
         }
         .separator::after {
@@ -67,16 +64,17 @@
             font-size: 14px;
             color: #888;
         }
-        .newspaper-border {
+        /* ОДИНАКОВЫЕ РАМКИ ДЛЯ ВСЕХ БЛОКОВ */
+        .border-block {
             border: 1px solid #d1cdc4;
             padding: 2rem;
             transition: all 0.3s ease;
         }
-        .newspaper-border:hover {
+        .border-block:hover {
             border-color: #888;
         }
         @media (max-width: 640px) {
-            .newspaper-border {
+            .border-block {
                 padding: 1.5rem;
             }
         }
@@ -116,23 +114,22 @@
             visibility: hidden;
         }
         .calendar-grid .day.highlight {
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 300;
+            font-size: 1rem;
             color: #1c1c1c;
         }
-        /* ТОНКОЕ СЕРДЦЕ С ОБВОДКОЙ */
         .calendar-grid .day.highlight::before {
             content: "♡";
             position: absolute;
-            font-size: 3.6rem;
+            font-size: 2.8rem;
             font-weight: 100;
             color: #1c1c1c;
-            opacity: 0.8;
-            animation: pulse-heart 2s ease-in-out infinite;
+            opacity: 0.5;
+            animation: pulse-heart 2.5s ease-in-out infinite;
         }
         @keyframes pulse-heart {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.08); }
         }
         .calendar-grid .day.other-month {
             color: #ccc;
@@ -150,6 +147,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             font-weight: 400;
+            font-family: 'Montserrat', sans-serif;
         }
         .map-btn:hover {
             background: #1c1c1c;
@@ -159,7 +157,7 @@
         #timer div span {
             transition: all 0.3s ease;
         }
-        /* АНИМАЦИИ AOS — только при прокрутке */
+        /* АНИМАЦИИ AOS */
         [data-aos] {
             pointer-events: none;
         }
@@ -185,7 +183,7 @@
                 max-height: 350px;
             }
         }
-        /* ЗАГОЛОВКИ ОДИНАКОВОГО РАЗМЕРА */
+        /* ОДИНАКОВЫЕ ЗАГОЛОВКИ ВО ВСЕХ БЛОКАХ */
         .section-title {
             font-size: 2rem;
             line-height: 1.2;
@@ -202,14 +200,87 @@
                 font-size: 1.25rem;
             }
         }
+        /* ОДИНАКОВЫЙ ОСНОВНОЙ ТЕКСТ */
+        .body-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #2c2c2c;
+        }
+        @media (max-width: 640px) {
+            .body-text {
+                font-size: 0.85rem;
+            }
+        }
         /* ХЕШТЕГИ В ШАПКЕ */
         .hashtag {
             font-weight: 300;
             letter-spacing: 0.05em;
+            font-family: 'Montserrat', sans-serif;
         }
         .hashtag::before {
             content: "#";
             font-weight: 300;
+        }
+        /* АНКЕТА */
+        .guest-card {
+            background: #fcfbf9;
+            border: 1px solid #d1cdc4;
+            padding: 2rem;
+        }
+        @media (max-width: 640px) {
+            .guest-card {
+                padding: 1.5rem;
+            }
+        }
+        /* ЧЕКБОКСЫ ДЛЯ НАПИТКОВ */
+        .drink-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+        }
+        .drink-checkbox input[type="checkbox"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #1c1c1c;
+            cursor: pointer;
+        }
+        /* ПОЛЕ ДЛЯ +1 (скрыто по умолчанию) */
+        .plusone-field {
+            display: none;
+            margin-top: 0.75rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #d1cdc4;
+        }
+        .plusone-field.visible {
+            display: block;
+        }
+        /* ОДИНАКОВЫЕ ОТСТУПЫ МЕЖДУ БЛОКАМИ */
+        .section-gap {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        @media (max-width: 640px) {
+            .section-gap {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+        /* РАЗДЕЛИТЕЛИ С ОДИНАКОВЫМИ ОТСТУПАМИ */
+        .separator-gap {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 640px) {
+            .separator-gap {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -217,7 +288,7 @@
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-16">
 
-        <!-- ШАПКА С ХЕШТЕГАМИ -->
+        <!-- ШАПКА -->
         <header class="text-center border-b-[3px] border-t-[3px] border-black py-6 mb-8 md:mb-10" data-aos="fade-down" data-aos-duration="1000">
             <div class="flex flex-wrap justify-center gap-3 sm:gap-6 text-[10px] sm:text-xs md:text-sm uppercase tracking-widest font-light mb-4">
                 <span class="hashtag">Минск</span>
@@ -228,7 +299,7 @@
             <p class="text-base sm:text-lg md:text-xl italic serif text-gray-700">Официальное издание, посвященное созданию новой семьи</p>
         </header>
 
-        <!-- ПРИГЛАШЕНИЕ + ФОТО -->
+        <!-- ПРИГЛАШЕНИЕ -->
         <section class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
             <div class="md:col-span-7">
                 <div class="aspect-[4/3] bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
@@ -240,19 +311,19 @@
                 <h2 class="text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
                     <span class="font-bold">Mikhail</span> <span class="text-2xl sm:text-3xl md:text-4xl">&amp;</span> <span class="font-bold">Yana</span>
                 </h2>
-                <p class="font-light text-sm md:text-base leading-relaxed drop-cap mb-4 text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
+                <p class="body-text drop-cap mb-4 text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
                     Дорогие гости! Совсем скоро мы скажем друг другу самые важные слова, и нам будет очень приятно, если в этот день вы будете рядом с нами.
                 </p>
-                <p class="font-light text-sm md:text-base leading-relaxed text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
+                <p class="body-text text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
                     Обещаем много улыбок, объятий, вкусной еды и совсем немного слёз — только от счастья!
                 </p>
             </div>
         </section>
 
-        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- КАЛЕНДАРЬ -->
-        <section class="max-w-2xl mx-auto my-12 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+        <section class="max-w-2xl mx-auto my-12 text-center section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <h2 class="section-title mb-2">Сентябрь 2026</h2>
             <div class="calendar-grid">
                 <div class="day weekday">Пн</div>
@@ -297,23 +368,23 @@
             </div>
         </section>
 
-        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- МЕСТО ПРОВЕДЕНИЯ -->
-        <section class="text-center my-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+        <section class="text-center my-12 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <h2 class="section-title mb-4">Место проведения</h2>
-            <p class="font-light text-lg">Ресторан «Название»</p>
-            <p class="font-light text-gray-600">Минск, ул. Примерная, 10</p>
-            <p class="font-light text-sm text-gray-400 mt-1 mb-6">Банкетный зал «Любовь»</p>
+            <p class="body-text text-lg">Ресторан «Название»</p>
+            <p class="body-text text-gray-600">Минск, ул. Примерная, 10</p>
+            <p class="body-text text-sm text-gray-400 mt-1 mb-6">Банкетный зал «Любовь»</p>
             <a href="https://maps.google.com/?q=Минск+ул+Примерная+10" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
                 Открыть на карте
             </a>
         </section>
 
-        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- ТАЙМИНГ -->
-        <section class="my-16 max-w-2xl mx-auto text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+        <section class="my-16 max-w-2xl mx-auto text-center section-gap" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
             <h2 class="section-title mb-10">Программа торжества</h2>
             <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gray-300">
 
@@ -323,7 +394,7 @@
                     </div>
                     <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-3 sm:p-4">
                         <h3 class="serif text-xl sm:text-2xl mb-1">Сбор гостей</h3>
-                        <p class="font-light text-gray-600 text-xs sm:text-sm">Приветственный фуршет, шампанское и лёгкая музыка.</p>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Приветственный фуршет, шампанское и лёгкая музыка.</p>
                     </div>
                 </div>
 
@@ -333,7 +404,7 @@
                     </div>
                     <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-3 sm:p-4">
                         <h3 class="serif text-xl sm:text-2xl mb-1">Церемония</h3>
-                        <p class="font-light text-gray-600 text-xs sm:text-sm">Трогательный момент обмена клятвами и кольцами.</p>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Трогательный момент обмена клятвами и кольцами.</p>
                     </div>
                 </div>
 
@@ -343,7 +414,7 @@
                     </div>
                     <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-3 sm:p-4">
                         <h3 class="serif text-xl sm:text-2xl mb-1">Праздничный ужин</h3>
-                        <p class="font-light text-gray-600 text-xs sm:text-sm">Вкусная еда, танцы и душевные разговоры.</p>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Вкусная еда, танцы и душевные разговоры.</p>
                     </div>
                 </div>
 
@@ -353,20 +424,20 @@
                     </div>
                     <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-3 sm:p-4">
                         <h3 class="serif text-xl sm:text-2xl mb-1">Завершение</h3>
-                        <p class="font-light text-gray-600 text-xs sm:text-sm">Прощаемся до новых встреч!</p>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Прощаемся до новых встреч!</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- ДРЕСС-КОД + ПОЖЕЛАНИЯ -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 my-12">
-            <div class="newspaper-border flex flex-col items-center" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 my-12 section-gap">
+            <div class="border-block flex flex-col items-center" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
                 <h3 class="section-title mb-4 text-center">Дресс-код</h3>
-                <p class="font-light text-center text-base md:text-lg mb-3">Итальянский стиль</p>
-                <p class="font-light text-sm text-center text-gray-600 max-w-xs mx-auto mb-4">
+                <p class="body-text text-center text-base md:text-lg mb-3">Итальянский стиль</p>
+                <p class="body-text text-sm text-center text-gray-600 max-w-xs mx-auto mb-4">
                     Вдохновение — солнечная Италия: элегантность и лёгкость.
                     Вдохновляйтесь образами на фото ниже!
                 </p>
@@ -375,46 +446,46 @@
                 </div>
             </div>
 
-            <div class="newspaper-border flex flex-col justify-center" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+            <div class="border-block flex flex-col justify-center" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                 <h3 class="section-title mb-4 text-center">Пожелания</h3>
-                <p class="font-light text-sm md:text-base leading-relaxed text-center">
+                <p class="body-text leading-relaxed text-center">
                     Мы очень ценим ваше внимание и тёплые пожелания. Если вы захотите дополнить подарок, вместо букета цветов будем рады бутылочке хорошего вина или другого любимого напитка — она будет радовать нас гораздо дольше.
                 </p>
             </div>
         </section>
 
-        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- ТАЙМЕР -->
-        <section class="text-center my-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+        <section class="text-center my-12 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <h2 class="section-title mb-6">До нашей свадьбы осталось</h2>
             <div id="timer" class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 text-center">
                 <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="100">
                     <span id="days" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
-                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500">Дней</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Дней</span>
                 </div>
                 <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="200">
                     <span id="hours" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
-                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500">Часов</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Часов</span>
                 </div>
                 <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="300">
                     <span id="minutes" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
-                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500">Минут</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Минут</span>
                 </div>
                 <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="400">
                     <span id="seconds" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
-                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500">Секунд</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Секунд</span>
                 </div>
             </div>
         </section>
 
-        <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- АНКЕТА -->
-        <section class="max-w-xl mx-auto my-16 md:my-20" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-            <div class="border border-gray-300 p-6 sm:p-8 md:p-12 bg-white shadow-sm">
+        <section class="max-w-xl mx-auto my-16 md:my-20 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <div class="guest-card">
                 <h2 class="section-title text-center mb-2">Анкета гостя</h2>
-                <p class="text-center font-light text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
+                <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
 
                 <form id="guestForm" class="space-y-5 sm:space-y-6">
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
@@ -436,14 +507,54 @@
                         </div>
                     </div>
 
+                    <!-- +1 С ВЫПАДАЮЩИМ ПОЛЕМ -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
-                        <label class="block serif text-lg mb-2" for="plusone">Будете ли вы с +1?</label>
-                        <input type="text" id="plusone" placeholder="Да / Нет, или укажите имя сопровождающего" class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm" />
+                        <span class="block serif text-lg mb-3">Будете ли вы с +1?</span>
+                        <div class="space-y-2 font-light text-sm sm:text-base">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" name="plusone" value="Да" class="accent-black w-4 h-4 plusone-radio" />
+                                <span>Да</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input type="radio" name="plusone" value="Нет" class="accent-black w-4 h-4 plusone-radio" checked />
+                                <span>Нет</span>
+                            </label>
+                        </div>
+                        <div id="plusoneField" class="plusone-field">
+                            <label class="block serif text-base mb-2" for="plusoneName">Имя и фамилия гостя</label>
+                            <input type="text" id="plusoneName" placeholder="Введите имя и фамилию" class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm" />
+                        </div>
                     </div>
 
+                    <!-- НАПИТКИ (список с чекбоксами) -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
-                        <label class="block serif text-lg mb-2" for="drinks">Предпочтения по напиткам</label>
-                        <input type="text" id="drinks" placeholder="Вино, шампанское, виски или б/а напитки..." class="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors font-light text-sm" />
+                        <span class="block serif text-lg mb-3">Предпочтения по напиткам (можно выбрать несколько)</span>
+                        <div class="grid grid-cols-2 gap-1">
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Вино" />
+                                <span>Вино</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Шампанское" />
+                                <span>Шампанское</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Виски" />
+                                <span>Виски</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Водка" />
+                                <span>Водка</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Безалкогольное" />
+                                <span>Безалкогольное</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Другое" />
+                                <span>Другое</span>
+                            </label>
+                        </div>
                     </div>
 
                     <button type="submit" class="w-full bg-black text-white font-serif uppercase tracking-widest py-4 mt-2 hover:bg-gray-800 transition duration-300 text-xs sm:text-sm" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
@@ -469,6 +580,7 @@
             easing: 'ease-out-cubic',
         });
 
+        // ТАЙМЕР
         function updateTimer() {
             const wedding = new Date('September 11, 2026 15:00:00').getTime();
             const now = new Date().getTime();
@@ -495,8 +607,48 @@
         updateTimer();
         setInterval(updateTimer, 1000);
 
+        // ПОКАЗАТЬ/СКРЫТЬ ПОЛЕ ДЛЯ +1
+        document.querySelectorAll('.plusone-radio').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const field = document.getElementById('plusoneField');
+                if (this.value === 'Да') {
+                    field.classList.add('visible');
+                } else {
+                    field.classList.remove('visible');
+                }
+            });
+        });
+
+        // АНКЕТА
         document.getElementById('guestForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            // Собираем выбранные напитки
+            const drinkCheckboxes = document.querySelectorAll('input[name="drinks"]:checked');
+            const drinks = [];
+            drinkCheckboxes.forEach(function(cb) {
+                drinks.push(cb.value);
+            });
+
+            // Собираем данные
+            const name = document.getElementById('name').value;
+            const attendance = document.querySelector('input[name="attendance"]:checked');
+            const plusone = document.querySelector('input[name="plusone"]:checked');
+            const plusoneName = document.getElementById('plusoneName').value;
+
+            // Формируем сообщение
+            let message = '✅ Новая заявка с сайта!\n\n';
+            message += '👤 Имя: ' + name + '\n';
+            message += '📌 Присутствие: ' + (attendance ? attendance.value : 'Не указано') + '\n';
+            message += '👫 +1: ' + (plusone ? plusone.value : 'Не указано');
+            if (plusone && plusone.value === 'Да' && plusoneName) {
+                message += ' (' + plusoneName + ')';
+            }
+            message += '\n🍷 Напитки: ' + (drinks.length > 0 ? drinks.join(', ') : 'Не выбраны');
+
+            // Показываем уведомление
+            alert(message);
+
             const btn = this.querySelector('button');
             const originalText = btn.innerText;
 
@@ -506,6 +658,7 @@
 
             setTimeout(() => {
                 this.reset();
+                document.getElementById('plusoneField').classList.remove('visible');
                 btn.innerText = originalText;
                 btn.classList.remove('bg-green-700');
                 btn.classList.add('bg-black', 'hover:bg-gray-800');
