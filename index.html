@@ -164,9 +164,9 @@
         [data-aos].aos-animate {
             pointer-events: auto;
         }
-        /* ДРЕСС-КОД ФОТО — УВЕЛИЧЕНО */
+        /* ДРЕСС-КОД ФОТО — УВЕЛИЧЕНО ЕЩЕ БОЛЬШЕ */
         .dresscode-img {
-            max-height: 800px;
+            max-height: 900px;
             width: auto;
             max-width: 100%;
             height: auto;
@@ -175,15 +175,15 @@
         }
         @media (max-width: 768px) {
             .dresscode-img {
-                max-height: 550px;
+                max-height: 600px;
             }
         }
         @media (max-width: 480px) {
             .dresscode-img {
-                max-height: 400px;
+                max-height: 450px;
             }
         }
-        /* ОДИНАКОВЫЕ ЗАГОЛОВКИ ВО ВСЕХ БЛОКАХ — ОДИН РАЗМЕР */
+        /* ОДИНАКОВЫЕ ЗАГОЛОВКИ ВО ВСЕХ БЛОКАХ */
         .section-title {
             font-size: 2rem;
             line-height: 1.2;
@@ -200,7 +200,7 @@
                 font-size: 1.25rem;
             }
         }
-        /* ОДИНАКОВЫЙ ОСНОВНОЙ ТЕКСТ — ОДИН РАЗМЕР */
+        /* ОДИНАКОВЫЙ ОСНОВНОЙ ТЕКСТ */
         .body-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
@@ -296,7 +296,7 @@
             }
         }
 
-        /* === МОДАЛЬНОЕ ОКНО В СТИЛЕ САЙТА === */
+        /* === МОДАЛЬНОЕ ОКНО === */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -394,7 +394,7 @@
         .modal-content .modal-btn:hover {
             background: #3a3a3a;
         }
-        /* СТИЛЬ ПОЛЯ ВВОДА КАК ВЕЗДЕ — ОДИНАКОВОЕ ОФОРМЛЕНИЕ */
+        /* СТИЛЬ ПОЛЯ ВВОДА — ОДИНАКОВЫЙ ДЛЯ ВСЕХ */
         .guest-input {
             width: 100%;
             border-bottom: 1px solid #d1cdc4;
@@ -425,7 +425,7 @@
             margin-top: 0.5rem;
         }
 
-        /* ВЫРАВНИВАНИЕ ТЕКСТА В ПРИГЛАШЕНИИ — ОДИНАКОВЫЕ ОТСТУПЫ */
+        /* ВЫРАВНИВАНИЕ ТЕКСТА В ПРИГЛАШЕНИИ */
         .invitation-text {
             text-align: left;
         }
@@ -434,6 +434,7 @@
                 text-align: center;
             }
         }
+
         /* ИМЕНА MIKHAIL & YANA — ВТОРОЙ ШРИФТ */
         .names-title {
             font-family: 'Playfair Display', serif;
@@ -443,6 +444,28 @@
             font-family: 'Playfair Display', serif;
             font-weight: 400;
             font-size: 0.8em;
+        }
+
+        /* ФОТО "ИЗ ЛИЧНОГО АРХИВА" — ТОЛЬКО ТЕКСТ, БЕЗ ОБВОДКИ */
+        .photo-credit {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            background: none;
+            padding: 0.2rem 0.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        @media (max-width: 640px) {
+            .photo-credit {
+                font-size: 0.5rem;
+                bottom: 0.3rem;
+                right: 0.3rem;
+            }
         }
     </style>
 </head>
@@ -466,15 +489,14 @@
             <div class="md:col-span-7">
                 <div class="aspect-[4/3] bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
                     <img src="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" alt="Mikhail and Yana" class="w-full h-full object-cover" />
-                    <div class="absolute bottom-2 right-2 text-white text-[10px] sm:text-xs opacity-70 bg-black/50 px-2 py-1 rounded">Фото: из личного архива</div>
+                    <!-- ТОЛЬКО ТЕКСТ, БЕЗ ОБВОДКИ -->
+                    <div class="photo-credit">Фото: из личного архива</div>
                 </div>
             </div>
             <div class="md:col-span-5 flex flex-col justify-center">
-                <!-- ИМЕНА MIKHAIL & YANA — ВТОРОЙ ШРИФТ -->
                 <h2 class="names-title text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
                     Mikhail <span class="amp">&amp;</span> Yana
                 </h2>
-                <!-- ТЕКСТ ПРИГЛАШЕНИЯ С ОДИНАКОВЫМИ ОТСТУПАМИ И ВЫРАВНИВАНИЕМ -->
                 <p class="body-text drop-cap mb-4 invitation-text" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
                     Дорогие гости! Совсем скоро мы скажем друг другу самые важные слова, и нам будет очень приятно, если в этот день вы будете рядом с нами.
                 </p>
@@ -652,7 +674,7 @@
                 <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
 
                 <form id="guestForm" class="space-y-5 sm:space-y-6">
-                    <!-- ИМЯ И ФАМИЛИЯ — ТАКОЕ ЖЕ ОФОРМЛЕНИЕ, КАК "УКАЖИТЕ ВАШ НАПИТОК" -->
+                    <!-- ИМЯ И ФАМИЛИЯ -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
                         <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
                         <div class="field-group">
