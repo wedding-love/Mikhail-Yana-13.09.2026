@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Свадебный Вестник | Mikhail & Yana</title>
+    
+    <!-- Open Graph / Социальные сети — для отображения фото в ссылке -->
+    <meta property="og:title" content="Свадебный Вестник | Mikhail & Yana" />
+    <meta property="og:description" content="Приглашаем вас на нашу свадьбу 11 сентября 2026" />
+    <meta property="og:image" content="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:url" content="https://ваш-сайт.com" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Свадебный Вестник | Mikhail & Yana" />
+    <meta name="twitter:description" content="Приглашаем вас на нашу свадьбу 11 сентября 2026" />
+    <meta name="twitter:image" content="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" />
+    
     <script src="https://cdn.tailwindcss.com">
     </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -103,18 +119,18 @@
             font-size: 1.1rem;
             color: #1c1c1c;
         }
-        /* СЕРДЦЕ ВМЕСТО КРУЖКА */
+        /* СЕРДЦЕ — ЧЁРНОЕ С ОБВОДКОЙ, НЕ ПОЛУПРОЗРАЧНОЕ */
         .calendar-grid .day.highlight::before {
-            content: "♥";
+            content: "♡";
             position: absolute;
-            font-size: 2.8rem;
+            font-size: 3.4rem;
             color: #1c1c1c;
-            opacity: 0.15;
+            opacity: 1;
             animation: pulse-heart 2s ease-in-out infinite;
         }
         @keyframes pulse-heart {
-            0%, 100% { transform: scale(1); opacity: 0.15; }
-            50% { transform: scale(1.15); opacity: 0.25; }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         .calendar-grid .day.other-month {
             color: #ccc;
@@ -148,27 +164,50 @@
         [data-aos].aos-animate {
             pointer-events: auto;
         }
-        /* АДАПТИВНЫЕ ИЗОБРАЖЕНИЯ */
-        .responsive-img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
+        /* ДРЕСС-КОД ФОТО — ОРИГИНАЛЬНЫЙ РАЗМЕР, НЕ ОБРЕЗАЕТСЯ */
         .dresscode-img {
             max-height: 500px;
-            width: 100%;
-            object-fit: cover;
+            width: auto;
+            max-width: 100%;
+            height: auto;
             border-radius: 4px;
+            object-fit: contain;
         }
         @media (max-width: 768px) {
             .dresscode-img {
-                max-height: 350px;
+                max-height: 400px;
             }
         }
         @media (max-width: 480px) {
             .dresscode-img {
-                max-height: 280px;
+                max-height: 300px;
             }
+        }
+        /* ЗАГОЛОВКИ ОДИНАКОВОГО РАЗМЕРА */
+        .section-title {
+            font-size: 2rem;
+            line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+        /* ХЕШТЕГИ В ШАПКЕ */
+        .hashtag {
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        .hashtag::before {
+            content: "#";
+            font-weight: 300;
         }
     </style>
 </head>
@@ -176,12 +215,12 @@
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-16">
 
-        <!-- ШАПКА -->
+        <!-- ШАПКА С ХЕШТЕГАМИ -->
         <header class="text-center border-b-[3px] border-t-[3px] border-black py-6 mb-8 md:mb-10" data-aos="fade-down" data-aos-duration="1000">
-            <div class="flex justify-between items-center text-[10px] sm:text-xs md:text-sm uppercase tracking-widest font-light mb-4">
-                <span>Minsk</span>
-                <span>Special Edition</span>
-                <span>September 2026</span>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-6 text-[10px] sm:text-xs md:text-sm uppercase tracking-widest font-light mb-4">
+                <span class="hashtag">Минск</span>
+                <span class="hashtag">СпециальныйВыпуск</span>
+                <span class="hashtag">Сентябрь2026</span>
             </div>
             <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-tight mb-2">Вестник Любви</h1>
             <p class="text-base sm:text-lg md:text-xl italic serif text-gray-700">Официальное издание, посвященное созданию новой семьи</p>
@@ -189,22 +228,21 @@
 
         <!-- ПРИГЛАШЕНИЕ + ФОТО -->
         <section class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-            <div class="md:col-span-8">
-                <div class="aspect-video bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
+            <div class="md:col-span-7">
+                <div class="aspect-[4/3] bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
                     <img src="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" alt="Mikhail and Yana" class="w-full h-full object-cover" />
                     <div class="absolute bottom-2 right-2 text-white text-[10px] sm:text-xs opacity-70 bg-black/50 px-2 py-1 rounded">Фото: из личного архива</div>
                 </div>
             </div>
-            <div class="md:col-span-4 flex flex-col justify-center">
-                <!-- ИМЕНА НА АНГЛИЙСКОМ: СНАЧАЛА MIKHAIL, ПОТОМ YANA -->
-                <h2 class="text-3xl sm:text-4xl md:text-4xl mb-4 leading-tight" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
-                    <span class="font-bold">Mikhail</span> &amp; <span class="font-bold">Yana</span>
+            <div class="md:col-span-5 flex flex-col justify-center text-center md:text-left">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl mb-3 leading-tight text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                    <span class="font-bold">Mikhail</span> <span class="text-2xl sm:text-3xl md:text-4xl">&amp;</span> <span class="font-bold">Yana</span>
                 </h2>
-                <p class="text-xl serif italic mb-3 text-gray-800" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">11 September 2026</p>
-                <p class="font-light text-sm md:text-base leading-relaxed drop-cap mb-4" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
+                <p class="text-2xl sm:text-3xl serif italic mb-4 text-gray-800 text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="400">11 сентября 2026</p>
+                <p class="font-light text-sm md:text-base leading-relaxed drop-cap mb-4 text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
                     Дорогие гости! Совсем скоро мы скажем друг другу самые важные слова, и нам будет очень приятно, если в этот день вы будете рядом с нами.
                 </p>
-                <p class="font-light text-sm md:text-base leading-relaxed" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
+                <p class="font-light text-sm md:text-base leading-relaxed text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
                     Обещаем много улыбок, объятий, вкусной еды и совсем немного слёз — только от счастья!
                 </p>
             </div>
@@ -214,63 +252,61 @@
 
         <!-- КАЛЕНДАРЬ -->
         <section class="max-w-2xl mx-auto my-12 text-center" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-            <h2 class="serif text-3xl md:text-4xl mb-2">September 2026</h2>
-            <p class="font-light text-gray-500 text-sm mb-6">Отметьте этот день в своём календаре</p>
+            <h2 class="section-title mb-2">Сентябрь 2026</h2>
             <div class="calendar-grid">
                 <!-- Дни недели -->
-                <div class="day weekday">Mon</div>
-                <div class="day weekday">Tue</div>
-                <div class="day weekday">Wed</div>
-                <div class="day weekday">Thu</div>
-                <div class="day weekday">Fri</div>
-                <div class="day weekday">Sat</div>
-                <div class="day weekday">Sun</div>
+                <div class="day weekday">Пн</div>
+                <div class="day weekday">Вт</div>
+                <div class="day weekday">Ср</div>
+                <div class="day weekday">Чт</div>
+                <div class="day weekday">Пт</div>
+                <div class="day weekday">Сб</div>
+                <div class="day weekday">Вс</div>
 
                 <!-- 1 сентября — вторник -->
-                <div class="day empty"></div> <!-- Mon — пусто -->
-                <div class="day">1</div>      <!-- Tue -->
-                <div class="day">2</div>      <!-- Wed -->
-                <div class="day">3</div>      <!-- Thu -->
-                <div class="day">4</div>      <!-- Fri -->
-                <div class="day">5</div>      <!-- Sat -->
-                <div class="day">6</div>      <!-- Sun -->
-                <div class="day">7</div>      <!-- Mon -->
-                <div class="day">8</div>      <!-- Tue -->
-                <div class="day">9</div>      <!-- Wed -->
-                <div class="day">10</div>     <!-- Thu -->
-                <div class="day highlight">11</div> <!-- Fri — СЕРДЦЕ -->
-                <div class="day">12</div>     <!-- Sat -->
-                <div class="day">13</div>     <!-- Sun -->
-                <div class="day">14</div>     <!-- Mon -->
-                <div class="day">15</div>     <!-- Tue -->
-                <div class="day">16</div>     <!-- Wed -->
-                <div class="day">17</div>     <!-- Thu -->
-                <div class="day">18</div>     <!-- Fri -->
-                <div class="day">19</div>     <!-- Sat -->
-                <div class="day">20</div>     <!-- Sun -->
-                <div class="day">21</div>     <!-- Mon -->
-                <div class="day">22</div>     <!-- Tue -->
-                <div class="day">23</div>     <!-- Wed -->
-                <div class="day">24</div>     <!-- Thu -->
-                <div class="day">25</div>     <!-- Fri -->
-                <div class="day">26</div>     <!-- Sat -->
-                <div class="day">27</div>     <!-- Sun -->
-                <div class="day">28</div>     <!-- Mon -->
-                <div class="day">29</div>     <!-- Tue -->
-                <div class="day">30</div>     <!-- Wed -->
+                <div class="day empty"></div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day highlight">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
             </div>
-            <p class="font-light text-sm text-gray-500 mt-4 serif italic">✦ The day our story begins ✦</p>
         </section>
 
         <div class="separator" data-aos="fade-in" data-aos-duration="600"></div>
 
         <!-- МЕСТО ПРОВЕДЕНИЯ С КНОПКОЙ -->
         <section class="text-center my-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-            <h2 class="serif text-3xl mb-4">Место проведения</h2>
+            <h2 class="section-title mb-4">Место проведения</h2>
             <p class="font-light text-lg">Ресторан «Название»</p>
-            <p class="font-light text-gray-600">Minsk, ул. Примерная, 10</p>
+            <p class="font-light text-gray-600">Минск, ул. Примерная, 10</p>
             <p class="font-light text-sm text-gray-400 mt-1 mb-6">Банкетный зал «Любовь»</p>
-            <a href="https://maps.google.com/?q=Minsk+ул+Примерная+10" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+            <a href="https://maps.google.com/?q=Минск+ул+Примерная+10" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
                 Открыть на карте
             </a>
         </section>
@@ -279,7 +315,7 @@
 
         <!-- ТАЙМИНГ -->
         <section class="my-16 max-w-2xl mx-auto text-center" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-            <h2 class="text-3xl md:text-4xl mb-10">Программа торжества</h2>
+            <h2 class="section-title mb-10">Программа торжества</h2>
             <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gray-300">
 
                 <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
@@ -329,7 +365,7 @@
         <!-- ДРЕСС-КОД + ПОЖЕЛАНИЯ -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 my-12">
             <div class="newspaper-border flex flex-col items-center" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
-                <h3 class="serif text-3xl mb-4 text-center">Дресс-код</h3>
+                <h3 class="section-title mb-4 text-center">Дресс-код</h3>
                 <p class="font-light text-center text-base md:text-lg mb-3">Итальянский стиль</p>
                 <p class="font-light text-sm text-center text-gray-600 max-w-xs mx-auto mb-4">
                     Вдохновение — солнечная Италия: элегантность, лёгкость и страсть.
@@ -342,7 +378,7 @@
             </div>
 
             <div class="newspaper-border flex flex-col justify-center" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                <h3 class="serif text-3xl mb-4 text-center">Пожелания</h3>
+                <h3 class="section-title mb-4 text-center">Пожелания</h3>
                 <p class="font-light text-sm md:text-base leading-relaxed text-center">
                     Мы очень ценим ваше внимание и тёплые пожелания. Если вы захотите дополнить подарок, вместо букета цветов будем рады бутылочке хорошего вина или другого любимого напитка — она будет радовать нас гораздо дольше.
                 </p>
@@ -353,7 +389,7 @@
 
         <!-- ТАЙМЕР -->
         <section class="text-center my-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-            <h2 class="serif text-3xl mb-6">До нашей свадьбы осталось</h2>
+            <h2 class="section-title mb-6">До нашей свадьбы осталось</h2>
             <div id="timer" class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 text-center">
                 <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="100">
                     <span id="days" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
@@ -379,7 +415,7 @@
         <!-- АНКЕТА -->
         <section class="max-w-xl mx-auto my-16 md:my-20" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div class="border border-gray-300 p-6 sm:p-8 md:p-12 bg-white shadow-sm">
-                <h2 class="text-2xl sm:text-3xl text-center mb-2">Анкета гостя</h2>
+                <h2 class="section-title text-center mb-2">Анкета гостя</h2>
                 <p class="text-center font-light text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
 
                 <form id="guestForm" class="space-y-5 sm:space-y-6">
@@ -428,7 +464,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
     </script>
     <script>
-        // ИНИЦИАЛИЗАЦИЯ AOS
         AOS.init({
             once: false,
             offset: 80,
@@ -436,7 +471,6 @@
             easing: 'ease-out-cubic',
         });
 
-        // ТАЙМЕР ДО 11 СЕНТЯБРЯ 2026
         function updateTimer() {
             const wedding = new Date('September 11, 2026 15:00:00').getTime();
             const now = new Date().getTime();
@@ -463,7 +497,6 @@
         updateTimer();
         setInterval(updateTimer, 1000);
 
-        // АНКЕТА
         document.getElementById('guestForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = this.querySelector('button');
