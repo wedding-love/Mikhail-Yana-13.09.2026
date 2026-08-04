@@ -29,7 +29,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
 
     <style>
-        /* ТОЛЬКО ДВА ШРИФТА */
         body {
             font-family: 'Montserrat', sans-serif;
             background: #fcfbf9;
@@ -64,7 +63,6 @@
             font-size: 14px;
             color: #888;
         }
-        /* ОДИНАКОВЫЕ РАМКИ ДЛЯ ВСЕХ БЛОКОВ */
         .border-block {
             border: 1px solid #d1cdc4;
             padding: 2rem;
@@ -78,7 +76,6 @@
                 padding: 1.5rem;
             }
         }
-        /* КАЛЕНДАРЬ */
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -134,7 +131,6 @@
         .calendar-grid .day.other-month {
             color: #ccc;
         }
-        /* КНОПКА НА КАРТЕ */
         .map-btn {
             display: inline-block;
             padding: 0.6rem 2rem;
@@ -153,18 +149,15 @@
             background: #1c1c1c;
             color: #fff;
         }
-        /* ТАЙМЕР */
         #timer div span {
             transition: all 0.3s ease;
         }
-        /* АНИМАЦИИ AOS */
         [data-aos] {
             pointer-events: none;
         }
         [data-aos].aos-animate {
             pointer-events: auto;
         }
-        /* ДРЕСС-КОД ФОТО */
         .dresscode-img {
             max-height: 900px;
             width: auto;
@@ -183,7 +176,6 @@
                 max-height: 450px;
             }
         }
-        /* ФОТО ЛОКАЦИИ */
         .location-img {
             max-height: 400px;
             width: 100%;
@@ -202,7 +194,6 @@
                 max-height: 220px;
             }
         }
-        /* ОДИНАКОВЫЕ ЗАГОЛОВКИ */
         .section-title {
             font-size: 2rem;
             line-height: 1.2;
@@ -219,7 +210,6 @@
                 font-size: 1.25rem;
             }
         }
-        /* ОДИНАКОВЫЙ ОСНОВНОЙ ТЕКСТ */
         .body-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
@@ -232,7 +222,6 @@
                 font-size: 0.85rem;
             }
         }
-        /* ХЕШТЕГИ В ШАПКЕ */
         .hashtag {
             font-weight: 300;
             letter-spacing: 0.05em;
@@ -242,7 +231,6 @@
             content: "#";
             font-weight: 300;
         }
-        /* АНКЕТА */
         .guest-card {
             background: #fcfbf9;
             border: 1px solid #d1cdc4;
@@ -253,7 +241,6 @@
                 padding: 1.5rem;
             }
         }
-        /* ЧЕКБОКСЫ */
         .drink-list {
             display: flex;
             flex-direction: column;
@@ -274,17 +261,45 @@
             accent-color: #1c1c1c;
             cursor: pointer;
         }
-        /* ПОЛЕ ДЛЯ +1 */
+
+        /* === ОБНОВЛЁННЫЕ СТИЛИ ДЛЯ ПОЛЕЙ ВВОДА === */
+        .guest-input {
+            width: 100%;
+            border-bottom: 1px solid #d1cdc4;
+            padding: 0.5rem 0;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: #2c2c2c;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+        .guest-input:focus {
+            border-color: #1c1c1c;
+        }
+        .guest-input::placeholder {
+            color: #bbb;
+            font-weight: 300;
+        }
+        @media (max-width: 640px) {
+            .guest-input {
+                font-size: 0.85rem;
+            }
+        }
+        .field-group {
+            margin-top: 0.5rem;
+        }
+
+        /* === +1 ПОЛЕ — ТОЧНО КАК "ДРУГОЕ" === */
         .plusone-field {
             display: none;
             margin-top: 0.75rem;
-            padding-left: 0.5rem;
-            border-left: 2px solid #d1cdc4;
         }
         .plusone-field.visible {
             display: block;
         }
-        /* ПОЛЕ ДЛЯ "ДРУГОЕ" */
+
         .drink-other-field {
             display: none;
             margin-top: 0.75rem;
@@ -292,7 +307,7 @@
         .drink-other-field.visible {
             display: block;
         }
-        /* ОТСТУПЫ */
+
         .section-gap {
             margin-top: 3rem;
             margin-bottom: 3rem;
@@ -314,7 +329,7 @@
             }
         }
 
-        /* === МОДАЛЬНОЕ ОКНО === */
+        /* МОДАЛЬНОЕ ОКНО */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -412,35 +427,7 @@
         .modal-content .modal-btn:hover {
             background: #3a3a3a;
         }
-        /* ПОЛЯ ВВОДА */
-        .guest-input {
-            width: 100%;
-            border-bottom: 1px solid #d1cdc4;
-            padding: 0.5rem 0;
-            background: transparent;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 0.95rem;
-            color: #2c2c2c;
-            transition: border-color 0.3s ease;
-            outline: none;
-        }
-        .guest-input:focus {
-            border-color: #1c1c1c;
-        }
-        .guest-input::placeholder {
-            color: #bbb;
-            font-weight: 300;
-        }
-        @media (max-width: 640px) {
-            .guest-input {
-                font-size: 0.85rem;
-            }
-        }
-        .field-group {
-            margin-top: 0.5rem;
-        }
-        /* ПРИГЛАШЕНИЕ */
+
         .invitation-text {
             text-align: left;
         }
@@ -458,7 +445,6 @@
             font-weight: 400;
             font-size: 0.8em;
         }
-        /* ФОТО "ИЗ ЛИЧНОГО АРХИВА" */
         .photo-credit {
             position: absolute;
             bottom: 0.5rem;
@@ -478,6 +464,28 @@
                 bottom: 0.3rem;
                 right: 0.3rem;
             }
+        }
+
+        /* === РАДИОКНОПКИ С ТАКИМ ЖЕ СТИЛЕМ КАК ЧЕКБОКСЫ === */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+        }
+        .radio-option input[type="radio"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #1c1c1c;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -567,13 +575,12 @@
 
         <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
-        <!-- МЕСТО ПРОВЕДЕНИЯ С ФОТО ЛОКАЦИИ -->
+        <!-- МЕСТО ПРОВЕДЕНИЯ -->
         <section class="text-center my-12 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <h2 class="section-title mb-4">Место проведения</h2>
             <p class="body-text text-lg">Ресторан «Название»</p>
             <p class="body-text text-gray-600">Минск, ул. Примерная, 10</p>
             <p class="body-text text-sm text-gray-400 mt-1 mb-4">Банкетный зал «Любовь»</p>
-            <!-- ФОТО ЛОКАЦИИ -->
             <div class="flex justify-center w-full max-w-2xl mx-auto">
                 <img src="image_2026-08-02_18-03-137.png" alt="Ресторан «Название»" class="location-img shadow-md" />
             </div>
@@ -700,30 +707,32 @@
 
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
                         <span class="block serif text-lg mb-3">Сможете ли вы присутствовать?</span>
-                        <div class="space-y-2 font-light text-sm sm:text-base">
-                            <label class="flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="attendance" value="Да, с удовольствием" class="accent-black w-4 h-4" required />
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="Да, с удовольствием" required />
                                 <span>Да, с удовольствием буду</span>
                             </label>
-                            <label class="flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="attendance" value="К сожалению, не смогу" class="accent-black w-4 h-4" />
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="К сожалению, не смогу" />
                                 <span>К сожалению, не смогу</span>
                             </label>
                         </div>
                     </div>
 
+                    <!-- === +1 — ТЕПЕРЬ ТОЧНО КАК "ДРУГОЕ" === -->
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
                         <span class="block serif text-lg mb-3">Будете ли вы с +1?</span>
-                        <div class="space-y-2 font-light text-sm sm:text-base">
-                            <label class="flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="plusone" value="Да" class="accent-black w-4 h-4 plusone-radio" />
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="plusone" value="Да" class="plusone-radio" />
                                 <span>Да</span>
                             </label>
-                            <label class="flex items-center gap-3 cursor-pointer">
-                                <input type="radio" name="plusone" value="Нет" class="accent-black w-4 h-4 plusone-radio" />
+                            <label class="radio-option">
+                                <input type="radio" name="plusone" value="Нет" class="plusone-radio" />
                                 <span>Нет</span>
                             </label>
                         </div>
+                        <!-- ПОЛЕ ДЛЯ +1 — ТОЧНО ТАКОЕ ЖЕ КАК "ДРУГОЕ" -->
                         <div id="plusoneField" class="plusone-field">
                             <label class="block serif text-base mb-2" for="plusoneName">Имя и фамилия гостя</label>
                             <div class="field-group">
@@ -829,7 +838,7 @@
         updateTimer();
         setInterval(updateTimer, 1000);
 
-        // +1
+        // +1 — ТОЧНО КАК "ДРУГОЕ"
         document.querySelectorAll('.plusone-radio').forEach(function(radio) {
             radio.addEventListener('change', function() {
                 const field = document.getElementById('plusoneField');
