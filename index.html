@@ -1,92 +1,917 @@
-<!-- АНКЕТА -->
-<section class="max-w-xl mx-auto my-16 md:my-20 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-    <div class="guest-card">
-        <h2 class="section-title text-center mb-2">Анкета гостя</h2>
-        <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Свадебный Вестник | Mikhail & Yana</title>
 
-        <form id="guestForm" class="space-y-5 sm:space-y-6">
-            <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
-                <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
-                <div class="field-group">
-                    <input type="text" id="name" required class="guest-input" placeholder="Иванов Иван" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Свадебный Вестник | Mikhail & Yana" />
+    <meta property="og:description" content="Приглашаем вас на нашу свадьбу 11 сентября 2026" />
+    <meta property="og:image" content="https://wedding-love.github.io/Mikhail-Yana-11.09.2026/69A9AE86-4329-4036-AC07-9111D8673305%20-%20Яна%20Яркина.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:url" content="https://wedding-love.github.io/Mikhail-Yana-11.09.2026/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Свадебный Вестник" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Свадебный Вестник | Mikhail & Yana" />
+    <meta name="twitter:description" content="Приглашаем вас на нашу свадьбу 11 сентября 2026" />
+    <meta name="twitter:image" content="https://wedding-love.github.io/Mikhail-Yana-11.09.2026/69A9AE86-4329-4036-AC07-9111D8673305%20-%20Яна%20Яркина.jpeg" />
+
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fcfbf9;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #111;
+        }
+        .separator {
+            border-top: 1px solid #d1cdc4;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+        .separator::after {
+            content: "✦";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fcfbf9;
+            padding: 0 10px;
+            font-size: 14px;
+            color: #888;
+        }
+        .border-block {
+            border: 1px solid #d1cdc4;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .border-block:hover {
+            border-color: #888;
+        }
+        @media (max-width: 640px) {
+            .border-block {
+                padding: 1.5rem;
+            }
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .calendar-grid .day {
+            padding: 0.6rem 0;
+            text-align: center;
+            font-size: 0.95rem;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .calendar-grid .day:not(.empty):not(.weekday):not(.highlight):hover {
+            background: #f0ede8;
+            cursor: default;
+            border-radius: 50%;
+        }
+        .calendar-grid .day.weekday {
+            font-weight: 500;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+        }
+        .calendar-grid .day.empty {
+            visibility: hidden;
+        }
+        .calendar-grid .day.highlight {
+            font-weight: 300;
+            font-size: 1rem;
+            color: #1c1c1c;
+        }
+        .calendar-grid .day.highlight::before {
+            content: "♡";
+            position: absolute;
+            font-size: 2.2rem;
+            font-weight: 100;
+            color: #1c1c1c;
+            opacity: 0.5;
+            animation: pulse-heart 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse-heart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .calendar-grid .day.other-month {
+            color: #ccc;
+        }
+        .map-btn {
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            border: 1px solid #1c1c1c;
+            background: transparent;
+            color: #1c1c1c;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 400;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .map-btn:hover {
+            background: #1c1c1c;
+            color: #fff;
+        }
+        #timer div span {
+            transition: all 0.3s ease;
+        }
+        [data-aos] {
+            pointer-events: none;
+        }
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+        .dresscode-img {
+            max-height: 900px;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+        @media (max-width: 768px) {
+            .dresscode-img {
+                max-height: 600px;
+            }
+        }
+        @media (max-width: 480px) {
+            .dresscode-img {
+                max-height: 450px;
+            }
+        }
+        .location-img {
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            object-fit: cover;
+            margin-top: 1rem;
+        }
+        @media (max-width: 768px) {
+            .location-img {
+                max-height: 300px;
+            }
+        }
+        @media (max-width: 480px) {
+            .location-img {
+                max-height: 220px;
+            }
+        }
+        .section-title {
+            font-size: 2rem;
+            line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+        .body-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #2c2c2c;
+        }
+        @media (max-width: 640px) {
+            .body-text {
+                font-size: 0.85rem;
+            }
+        }
+        .hashtag {
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hashtag::before {
+            content: "#";
+            font-weight: 300;
+        }
+        .guest-card {
+            background: #fcfbf9;
+            border: 1px solid #d1cdc4;
+            padding: 2rem;
+        }
+        @media (max-width: 640px) {
+            .guest-card {
+                padding: 1.5rem;
+            }
+        }
+        .drink-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .drink-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+        }
+        .drink-checkbox input[type="checkbox"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #1c1c1c;
+            cursor: pointer;
+        }
+
+        /* === ПОЛЯ ВВОДА === */
+        .guest-input {
+            width: 100%;
+            border-bottom: 1px solid #d1cdc4;
+            padding: 0.5rem 0;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: #2c2c2c;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+        .guest-input:focus {
+            border-color: #1c1c1c;
+        }
+        .guest-input::placeholder {
+            color: #bbb;
+            font-weight: 300;
+        }
+        @media (max-width: 640px) {
+            .guest-input {
+                font-size: 0.85rem;
+            }
+        }
+        .field-group {
+            margin-top: 0.5rem;
+        }
+
+        /* === +1 и ДРУГОЕ — УБРАН ЛИШНИЙ ОТСТУП === */
+        .plusone-field,
+        .drink-other-field {
+            display: none;
+            /* margin-top: 0; — теперь отступ только от .field-group */
+        }
+        .plusone-field.visible,
+        .drink-other-field.visible {
+            display: block;
+        }
+
+        .section-gap {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        @media (max-width: 640px) {
+            .section-gap {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+        .separator-gap {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        @media (max-width: 640px) {
+            .separator-gap {
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* МОДАЛЬНОЕ ОКНО */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 44, 44, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #fcfbf9;
+            border: 1px solid #d1cdc4;
+            padding: 2.5rem;
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+        .modal-content .close-btn {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .modal-content .close-btn:hover {
+            color: #1c1c1c;
+        }
+        .modal-content .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+        .modal-content .modal-divider {
+            border-top: 1px solid #d1cdc4;
+            margin: 1rem 0;
+        }
+        .modal-content .modal-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .modal-content .modal-row .label {
+            color: #888;
+            font-weight: 400;
+        }
+        .modal-content .modal-row .value {
+            text-align: right;
+            max-width: 60%;
+        }
+        .modal-content .modal-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1.5rem;
+            background: #1c1c1c;
+            color: #fff;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .modal-content .modal-btn:hover {
+            background: #3a3a3a;
+        }
+
+        .invitation-text {
+            text-align: left;
+        }
+        @media (max-width: 640px) {
+            .invitation-text {
+                text-align: center;
+            }
+        }
+        .names-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        .names-title .amp {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 0.8em;
+        }
+        .photo-credit {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.6rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            background: none;
+            padding: 0.2rem 0.5rem;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+        @media (max-width: 640px) {
+            .photo-credit {
+                font-size: 0.5rem;
+                bottom: 0.3rem;
+                right: 0.3rem;
+            }
+        }
+
+        /* === РАДИОКНОПКИ С ТАКИМ ЖЕ СТИЛЕМ КАК ЧЕКБОКСЫ === */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 0.9rem;
+            padding: 0.25rem 0;
+        }
+        .radio-option input[type="radio"] {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: #1c1c1c;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 py-8 md:py-16">
+
+        <!-- ШАПКА -->
+        <header class="text-center border-b-[3px] border-t-[3px] border-black py-6 mb-8 md:mb-10" data-aos="fade-down" data-aos-duration="1000">
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-6 text-[10px] sm:text-xs md:text-sm uppercase tracking-widest font-light mb-4">
+                <span class="hashtag">Минск</span>
+                <span class="hashtag">СпециальныйВыпуск</span>
+                <span class="hashtag">Сентябрь2026</span>
+            </div>
+            <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-tight mb-2">Вестник Любви</h1>
+            <p class="text-base sm:text-lg md:text-xl italic serif text-gray-700">Официальное издание, посвященное созданию новой семьи</p>
+        </header>
+
+        <!-- ПРИГЛАШЕНИЕ -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 mb-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <div class="md:col-span-7">
+                <div class="aspect-[4/3] bg-gray-200 mb-4 overflow-hidden relative grayscale hover:grayscale-0 transition duration-700">
+                    <img src="69A9AE86-4329-4036-AC07-9111D8673305 - Яна Яркина.jpeg" alt="Mikhail and Yana" class="w-full h-full object-cover" />
+                    <div class="photo-credit">Фото: из личного архива</div>
                 </div>
             </div>
-
-            <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
-                <span class="block serif text-lg mb-3">Сможете ли вы присутствовать?</span>
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="attendance" value="Да, с удовольствием" required />
-                        <span>Да, с удовольствием буду</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="attendance" value="К сожалению, не смогу" />
-                        <span>К сожалению, не смогу</span>
-                    </label>
-                </div>
+            <div class="md:col-span-5 flex flex-col justify-center">
+                <h2 class="names-title text-3xl sm:text-4xl md:text-5xl mb-6 leading-tight text-center md:text-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
+                    Mikhail <span class="amp">&amp;</span> Yana
+                </h2>
+                <p class="body-text drop-cap mb-4 invitation-text" data-aos="fade-right" data-aos-duration="800" data-aos-delay="500">
+                    Дорогие гости! Совсем скоро мы скажем друг другу самые важные слова, и нам будет очень приятно, если в этот день вы будете рядом с нами.
+                </p>
+                <p class="body-text invitation-text" data-aos="fade-right" data-aos-duration="800" data-aos-delay="600">
+                    Обещаем много улыбок, объятий, вкусной еды и совсем немного слёз — только от счастья!
+                </p>
             </div>
+        </section>
 
-            <!-- +1 -->
-            <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
-                <span class="block serif text-lg mb-3">Будете ли вы с +1?</span>
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="plusone" value="Да" class="plusone-radio" />
-                        <span>Да</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="plusone" value="Нет" class="plusone-radio" />
-                        <span>Нет</span>
-                    </label>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- КАЛЕНДАРЬ -->
+        <section class="max-w-2xl mx-auto my-12 text-center section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="section-title mb-2">Сентябрь 2026</h2>
+            <div class="calendar-grid">
+                <div class="day weekday">Пн</div>
+                <div class="day weekday">Вт</div>
+                <div class="day weekday">Ср</div>
+                <div class="day weekday">Чт</div>
+                <div class="day weekday">Пт</div>
+                <div class="day weekday">Сб</div>
+                <div class="day weekday">Вс</div>
+
+                <div class="day empty"></div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day highlight">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+            </div>
+        </section>
+
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- МЕСТО ПРОВЕДЕНИЯ -->
+        <section class="text-center my-12 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="section-title mb-4">Место проведения</h2>
+            <p class="body-text text-lg">Ресторан «Название»</p>
+            <p class="body-text text-gray-600">Минск, ул. Примерная, 10</p>
+            <p class="body-text text-sm text-gray-400 mt-1 mb-4">Банкетный зал «Любовь»</p>
+            <div class="flex justify-center w-full max-w-2xl mx-auto">
+                <img src="image_2026-08-02_18-03-137.png" alt="Ресторан «Название»" class="location-img shadow-md" />
+            </div>
+            <div class="mt-4">
+                <a href="https://maps.google.com/?q=Минск+ул+Примерная+10" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
+                    Открыть на карте
+                </a>
+            </div>
+        </section>
+
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- ТАЙМИНГ -->
+        <section class="my-16 max-w-2xl mx-auto text-center section-gap" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="section-title mb-10">Программа торжества</h2>
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gray-300">
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-[10px] sm:text-xs font-serif">15:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-3 sm:p-4">
+                        <h3 class="serif text-xl sm:text-2xl mb-1">Сбор гостей</h3>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Приветственный фуршет, шампанское и лёгкая музыка.</p>
+                    </div>
                 </div>
-                <div id="plusoneField" class="plusone-field">
-                    <label class="block serif text-base mb-2" for="plusoneName">Имя и фамилия гостя</label>
-                    <div class="field-group">
-                        <input type="text" id="plusoneName" placeholder="Петров Петр" class="guest-input" />
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-[10px] sm:text-xs font-serif">16:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-3 sm:p-4">
+                        <h3 class="serif text-xl sm:text-2xl mb-1">Церемония</h3>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Трогательный момент обмена клятвами и кольцами.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="300">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-[10px] sm:text-xs font-serif">17:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-3 sm:p-4">
+                        <h3 class="serif text-xl sm:text-2xl mb-1">Праздничный ужин</h3>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Вкусная еда, танцы и душевные разговоры.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-left" data-aos-duration="600" data-aos-delay="400">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
+                        <span class="text-[10px] sm:text-xs font-serif">23:00</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-3 sm:p-4">
+                        <h3 class="serif text-xl sm:text-2xl mb-1">Завершение</h3>
+                        <p class="body-text text-gray-600 text-xs sm:text-sm">Прощаемся до новых встреч!</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Напитки -->
-            <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
-                <span class="block serif text-lg mb-3">Предпочтения по напиткам (можно выбрать несколько)</span>
-                <div class="drink-list">
-                    <label class="drink-checkbox">
-                        <input type="checkbox" name="drinks" value="Вино" />
-                        <span>Вино</span>
-                    </label>
-                    <label class="drink-checkbox">
-                        <input type="checkbox" name="drinks" value="Шампанское" />
-                        <span>Шампанское</span>
-                    </label>
-                    <label class="drink-checkbox">
-                        <input type="checkbox" name="drinks" value="Виски" />
-                        <span>Виски</span>
-                    </label>
-                    <label class="drink-checkbox">
-                        <input type="checkbox" name="drinks" value="Водка" />
-                        <span>Водка</span>
-                    </label>
-                    <label class="drink-checkbox">
-                        <input type="checkbox" name="drinks" value="Безалкогольное" />
-                        <span>Безалкогольное</span>
-                    </label>
-                    <label class="drink-checkbox">
-                        <input type="checkbox" name="drinks" value="Другое" id="drinkOtherCheckbox" />
-                        <span>Другое</span>
-                    </label>
-                </div>
-                <div id="drinkOtherField" class="drink-other-field">
-                    <label class="block serif text-base mb-2" for="drinkOtherInput">Укажите ваш напиток</label>
-                    <div class="field-group">
-                        <input type="text" id="drinkOtherInput" placeholder="Например: Мартини, Мохито..." class="guest-input" />
-                    </div>
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- ДРЕСС-КОД + ПОЖЕЛАНИЯ -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 my-12 section-gap">
+            <div class="border-block flex flex-col items-center" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                <h3 class="section-title mb-4 text-center">Дресс-код</h3>
+                <p class="body-text text-center text-base md:text-lg mb-3">Итальянский стиль</p>
+                <p class="body-text text-sm text-center text-gray-600 max-w-xs mx-auto mb-4">
+                    Вдохновение — солнечная Италия: элегантность и лёгкость.
+                    Вдохновляйтесь образами на фото ниже!
+                </p>
+                <div class="flex justify-center w-full">
+                    <img src="image_2026-08-02_16-49-26.png" alt="Итальянский стиль" class="dresscode-img shadow-md" />
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-black text-white font-serif uppercase tracking-widest py-4 mt-2 hover:bg-gray-800 transition duration-300 text-xs sm:text-sm" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
-                Отправить ответ
-            </button>
-        </form>
+            <div class="border-block flex flex-col justify-center" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                <h3 class="section-title mb-4 text-center">Пожелания</h3>
+                <p class="body-text leading-relaxed text-center">
+                    Мы очень ценим ваше внимание и тёплые пожелания. Если вы захотите дополнить подарок, вместо букета цветов будем рады бутылочке хорошего вина или другого любимого напитка — она будет радовать нас гораздо дольше.
+                </p>
+            </div>
+        </section>
+
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- ТАЙМЕР -->
+        <section class="text-center my-12 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <h2 class="section-title mb-6">До нашей свадьбы осталось</h2>
+            <div id="timer" class="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-10 text-center">
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="100">
+                    <span id="days" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Дней</span>
+                </div>
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="200">
+                    <span id="hours" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Часов</span>
+                </div>
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="300">
+                    <span id="minutes" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Минут</span>
+                </div>
+                <div data-aos="flip-up" data-aos-duration="600" data-aos-delay="400">
+                    <span id="seconds" class="block text-4xl sm:text-5xl md:text-6xl font-light serif">00</span>
+                    <span class="text-[10px] sm:text-xs uppercase tracking-widest text-gray-500 font-light">Секунд</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+
+        <!-- АНКЕТА -->
+        <section class="max-w-xl mx-auto my-16 md:my-20 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <div class="guest-card">
+                <h2 class="section-title text-center mb-2">Анкета гостя</h2>
+                <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
+
+                <form id="guestForm" class="space-y-5 sm:space-y-6">
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
+                        <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
+                        <div class="field-group">
+                            <input type="text" id="name" required class="guest-input" placeholder="Иванов Иван" />
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="200">
+                        <span class="block serif text-lg mb-3">Сможете ли вы присутствовать?</span>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="Да, с удовольствием" required />
+                                <span>Да, с удовольствием буду</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="attendance" value="К сожалению, не смогу" />
+                                <span>К сожалению, не смогу</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- +1 -->
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
+                        <span class="block serif text-lg mb-3">Будете ли вы с +1?</span>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="plusone" value="Да" class="plusone-radio" />
+                                <span>Да</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="plusone" value="Нет" class="plusone-radio" />
+                                <span>Нет</span>
+                            </label>
+                        </div>
+                        <div id="plusoneField" class="plusone-field">
+                            <label class="block serif text-base mb-2" for="plusoneName">Имя и фамилия гостя</label>
+                            <div class="field-group">
+                                <input type="text" id="plusoneName" placeholder="Петров Петр" class="guest-input" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Напитки -->
+                    <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="400">
+                        <span class="block serif text-lg mb-3">Предпочтения по напиткам (можно выбрать несколько)</span>
+                        <div class="drink-list">
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Вино" />
+                                <span>Вино</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Шампанское" />
+                                <span>Шампанское</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Виски" />
+                                <span>Виски</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Водка" />
+                                <span>Водка</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Безалкогольное" />
+                                <span>Безалкогольное</span>
+                            </label>
+                            <label class="drink-checkbox">
+                                <input type="checkbox" name="drinks" value="Другое" id="drinkOtherCheckbox" />
+                                <span>Другое</span>
+                            </label>
+                        </div>
+                        <div id="drinkOtherField" class="drink-other-field">
+                            <label class="block serif text-base mb-2" for="drinkOtherInput">Укажите ваш напиток</label>
+                            <div class="field-group">
+                                <input type="text" id="drinkOtherInput" placeholder="Например: Мартини, Мохито..." class="guest-input" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-black text-white font-serif uppercase tracking-widest py-4 mt-2 hover:bg-gray-800 transition duration-300 text-xs sm:text-sm" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="500">
+                        Отправить ответ
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="text-center py-6 md:py-8 border-t border-gray-300 mt-8 md:mt-12" data-aos="fade-in" data-aos-duration="800">
+            <p class="font-serif italic text-gray-500 text-sm md:text-base">До встречи на нашем празднике!</p>
+        </footer>
+
+    </main>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" id="modalCloseBtn">✕</button>
+            <div class="modal-title">✨ Ваш ответ получен</div>
+            <div class="modal-divider"></div>
+            <div id="modalBody"></div>
+            <button class="modal-btn" id="modalCloseBtn2">Закрыть</button>
+        </div>
     </div>
-</section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 80,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // ТАЙМЕР
+        function updateTimer() {
+            const wedding = new Date('September 11, 2026 15:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = wedding - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // +1
+        document.querySelectorAll('.plusone-radio').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const field = document.getElementById('plusoneField');
+                if (this.value === 'Да') {
+                    field.classList.add('visible');
+                } else {
+                    field.classList.remove('visible');
+                }
+            });
+        });
+
+        // "ДРУГОЕ"
+        document.getElementById('drinkOtherCheckbox').addEventListener('change', function() {
+            const field = document.getElementById('drinkOtherField');
+            if (this.checked) {
+                field.classList.add('visible');
+            } else {
+                field.classList.remove('visible');
+            }
+        });
+
+        // МОДАЛЬНОЕ ОКНО
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalBody = document.getElementById('modalBody');
+
+        function openModal(data) {
+            modalBody.innerHTML = data;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+        document.getElementById('modalCloseBtn2').addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // АНКЕТА
+        document.getElementById('guestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim() || 'Не указано';
+            const attendance = document.querySelector('input[name="attendance"]:checked');
+            const attendanceValue = attendance ? attendance.value : 'Не выбрано';
+
+            const plusone = document.querySelector('input[name="plusone"]:checked');
+            const plusoneValue = plusone ? plusone.value : 'Не выбрано';
+            const plusoneName = document.getElementById('plusoneName').value.trim();
+
+            const drinkCheckboxes = document.querySelectorAll('input[name="drinks"]:checked');
+            const drinks = [];
+            let otherDrink = '';
+            drinkCheckboxes.forEach(function(cb) {
+                if (cb.value === 'Другое') {
+                    const otherVal = document.getElementById('drinkOtherInput').value.trim();
+                    otherDrink = otherVal ? ' (' + otherVal + ')' : '';
+                    drinks.push('Другое' + otherDrink);
+                } else {
+                    drinks.push(cb.value);
+                }
+            });
+            const drinksValue = drinks.length > 0 ? drinks.join(', ') : 'Не выбраны';
+
+            let html = '';
+            html += '<div class="modal-row"><span class="label">👤 Имя</span><span class="value">' + name + '</span></div>';
+            html += '<div class="modal-row"><span class="label">📌 Присутствие</span><span class="value">' + attendanceValue + '</span></div>';
+            html += '<div class="modal-row"><span class="label">👫 +1</span><span class="value">' + plusoneValue + (plusoneValue === 'Да' && plusoneName ? ' (' + plusoneName + ')' : '') + '</span></div>';
+            html += '<div class="modal-row"><span class="label">🍷 Напитки</span><span class="value">' + drinksValue + '</span></div>';
+
+            openModal(html);
+        });
+    </script>
+</body>
+</html>
