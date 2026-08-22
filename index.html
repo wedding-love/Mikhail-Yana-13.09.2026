@@ -480,6 +480,15 @@
             accent-color: #1c1c1c;
             cursor: pointer;
         }
+
+        /* Сообщение об успешной отправке (без смайлов) */
+        .success-message {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #2c2c2c;
+            padding: 0.5rem 0;
+        }
     </style>
 </head>
 <body>
@@ -573,9 +582,9 @@
             <h2 class="section-title mb-4">Место проведения</h2>
             <p class="body-text text-lg">Loft Hall</p>
             <p class="body-text text-gray-600">Москва, 2-й Кожуховский проезд, 29к6</p>
-            <!-- Строка "Банкетный зал «Love»" удалена -->
             <div class="flex justify-center w-full max-w-2xl mx-auto">
-                <img src="image_2026-08-02_18-03-137.png" alt="Loft Hall" class="location-img shadow-md" />
+                <!-- Заменено фото -->
+                <img src="photo_2026-08-21_16-08-44.jpg" alt="Loft Hall" class="location-img shadow-md" />
             </div>
             <div class="mt-4">
                 <a href="https://yandex.ru/maps/?text=Москва%202-й%20Кожуховский%20проезд%2029к6" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
@@ -586,54 +595,7 @@
 
         <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
 
-        <!-- ТАЙМИНГ -->
-        <section class="my-16 max-w-2xl mx-auto text-center section-gap" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-            <h2 class="section-title mb-10">Программа торжества</h2>
-            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gray-300">
-
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
-                        <span class="text-[10px] sm:text-xs font-serif">15:00</span>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-3 sm:p-4">
-                        <h3 class="serif text-xl sm:text-2xl mb-1">Сбор гостей</h3>
-                        <p class="body-text text-gray-600 text-xs sm:text-sm">Приветственный фуршет, шампанское и лёгкая музыка.</p>
-                    </div>
-                </div>
-
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
-                        <span class="text-[10px] sm:text-xs font-serif">16:00</span>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-3 sm:p-4">
-                        <h3 class="serif text-xl sm:text-2xl mb-1">Церемония</h3>
-                        <p class="body-text text-gray-600 text-xs sm:text-sm">Трогательный момент обмена клятвами и кольцами.</p>
-                    </div>
-                </div>
-
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-right" data-aos-duration="600" data-aos-delay="300">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
-                        <span class="text-[10px] sm:text-xs font-serif">17:00</span>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-odd:text-right p-3 sm:p-4">
-                        <h3 class="serif text-xl sm:text-2xl mb-1">Праздничный ужин</h3>
-                        <p class="body-text text-gray-600 text-xs sm:text-sm">Вкусная еда, танцы и душевные разговоры.</p>
-                    </div>
-                </div>
-
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" data-aos="fade-left" data-aos-duration="600" data-aos-delay="400">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-gray-800 text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 shadow">
-                        <span class="text-[10px] sm:text-xs font-serif">23:00</span>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] text-left md:group-even:text-right p-3 sm:p-4">
-                        <h3 class="serif text-xl sm:text-2xl mb-1">Завершение</h3>
-                        <p class="body-text text-gray-600 text-xs sm:text-sm">Прощаемся до новых встреч!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="separator separator-gap" data-aos="fade-in" data-aos-duration="600"></div>
+        <!-- ТАЙМИНГ УДАЛЁН -->
 
         <!-- ДРЕСС-КОД + ПОЖЕЛАНИЯ -->
         <section class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 my-12 section-gap">
@@ -688,13 +650,13 @@
         <section class="max-w-xl mx-auto my-16 md:my-20 section-gap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div class="guest-card">
                 <h2 class="section-title text-center mb-2">Анкета гостя</h2>
-                <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 15 августа 2026</strong></p>
+                <p class="body-text text-center text-sm text-gray-500 mb-6 sm:mb-8">Пожалуйста, подтвердите своё присутствие <strong>до 28 августа 2026</strong></p>
 
                 <form id="guestForm" class="space-y-5 sm:space-y-6">
                     <div data-aos="fade-right" data-aos-duration="500" data-aos-delay="100">
                         <label class="block serif text-lg mb-2" for="name">Ваши имя и фамилия</label>
                         <div class="field-group">
-                            <input type="text" id="name" required class="guest-input" placeholder="Иванов Иван" />
+                            <input type="text" id="name" name="name" required class="guest-input" placeholder="Иванов Иван" />
                         </div>
                     </div>
 
@@ -728,7 +690,7 @@
                         <div id="plusoneField" class="plusone-field">
                             <label class="block serif text-base mb-2" for="plusoneName">Имя и фамилия гостя</label>
                             <div class="field-group">
-                                <input type="text" id="plusoneName" placeholder="Петров Петр" class="guest-input" />
+                                <input type="text" id="plusoneName" name="plusoneName" placeholder="Петров Петр" class="guest-input" />
                             </div>
                         </div>
                     </div>
@@ -765,7 +727,7 @@
                         <div id="drinkOtherField" class="drink-other-field">
                             <label class="block serif text-base mb-2" for="drinkOtherInput">Укажите ваш напиток</label>
                             <div class="field-group">
-                                <input type="text" id="drinkOtherInput" placeholder="Например: Мартини, Мохито..." class="guest-input" />
+                                <input type="text" id="drinkOtherInput" name="drinkOther" placeholder="Например: Мартини, Мохито..." class="guest-input" />
                             </div>
                         </div>
                     </div>
@@ -783,13 +745,15 @@
 
     </main>
 
-    <!-- МОДАЛЬНОЕ ОКНО -->
+    <!-- МОДАЛЬНОЕ ОКНО (без смайлов) -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" id="modalCloseBtn">✕</button>
-            <div class="modal-title">✨ Ваш ответ получен</div>
+            <div class="modal-title">Ваш ответ получен</div>
             <div class="modal-divider"></div>
-            <div id="modalBody"></div>
+            <div id="modalBody" class="success-message">
+                <p>Благодарим вас за подтверждение! Ждём встречи.</p>
+            </div>
             <button class="modal-btn" id="modalCloseBtn2">Закрыть</button>
         </div>
     </div>
@@ -857,8 +821,8 @@
         const modalOverlay = document.getElementById('modalOverlay');
         const modalBody = document.getElementById('modalBody');
 
-        function openModal(data) {
-            modalBody.innerHTML = data;
+        function openModal(message) {
+            modalBody.innerHTML = message || '<p>Благодарим вас за подтверждение! Ждём встречи.</p>';
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -877,39 +841,36 @@
             }
         });
 
-        // АНКЕТА
-        document.getElementById('guestForm').addEventListener('submit', function(e) {
+        // ОТПРАВКА ФОРМЫ ЧЕРЕЗ FORMSPREE (AJAX)
+        document.getElementById('guestForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const name = document.getElementById('name').value.trim() || 'Не указано';
-            const attendance = document.querySelector('input[name="attendance"]:checked');
-            const attendanceValue = attendance ? attendance.value : 'Не выбрано';
+            const form = this;
+            const formData = new FormData(form);
 
-            const plusone = document.querySelector('input[name="plusone"]:checked');
-            const plusoneValue = plusone ? plusone.value : 'Не выбрано';
-            const plusoneName = document.getElementById('plusoneName').value.trim();
+            try {
+                const response = await fetch('https://formspree.io/f/xyegvgrn', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
 
-            const drinkCheckboxes = document.querySelectorAll('input[name="drinks"]:checked');
-            const drinks = [];
-            let otherDrink = '';
-            drinkCheckboxes.forEach(function(cb) {
-                if (cb.value === 'Другое') {
-                    const otherVal = document.getElementById('drinkOtherInput').value.trim();
-                    otherDrink = otherVal ? ' (' + otherVal + ')' : '';
-                    drinks.push('Другое' + otherDrink);
+                if (response.ok) {
+                    // Очищаем форму
+                    form.reset();
+                    // Скрываем дополнительные поля
+                    document.getElementById('plusoneField').classList.remove('visible');
+                    document.getElementById('drinkOtherField').classList.remove('visible');
+                    // Показываем сообщение об успехе (без смайлов)
+                    openModal('<p>Ваш ответ успешно отправлен. Спасибо!</p>');
                 } else {
-                    drinks.push(cb.value);
+                    alert('Произошла ошибка при отправке. Попробуйте ещё раз.');
                 }
-            });
-            const drinksValue = drinks.length > 0 ? drinks.join(', ') : 'Не выбраны';
-
-            let html = '';
-            html += '<div class="modal-row"><span class="label">Имя</span><span class="value">' + name + '</span></div>';
-            html += '<div class="modal-row"><span class="label">Присутствие</span><span class="value">' + attendanceValue + '</span></div>';
-            html += '<div class="modal-row"><span class="label">+1</span><span class="value">' + plusoneValue + (plusoneValue === 'Да' && plusoneName ? ' (' + plusoneName + ')' : '') + '</span></div>';
-            html += '<div class="modal-row"><span class="label">Напитки</span><span class="value">' + drinksValue + '</span></div>';
-
-            openModal(html);
+            } catch (error) {
+                alert('Ошибка сети. Проверьте подключение и попробуйте снова.');
+            }
         });
     </script>
 </body>
