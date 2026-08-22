@@ -177,24 +177,24 @@
             }
         }
 
-        /* --- Фото локации: полное отображение без обрезки, прямоугольное, ширина 100% --- */
+        /* --- Фото локации: компактное, гармоничное --- */
         .location-img {
             width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;      /* фото видно целиком, без обрезки */
+            max-height: 280px;
+            object-fit: cover;
             border-radius: 4px;
-            margin-top: 1rem;
+            border: 1px solid #d1cdc4;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
             display: block;
         }
         @media (max-width: 768px) {
             .location-img {
-                max-height: 300px;
+                max-height: 220px;
             }
         }
         @media (max-width: 480px) {
             .location-img {
-                max-height: 220px;
+                max-height: 180px;
             }
         }
 
@@ -584,9 +584,8 @@
             <h2 class="section-title mb-4">Место проведения</h2>
             <p class="body-text text-lg">Loft Hall</p>
             <p class="body-text text-gray-600">Москва, 2-й Кожуховский проезд, 29к6</p>
-            <div class="flex justify-center w-full max-w-2xl mx-auto">
-                <!-- Фото теперь отображается полностью, без обрезки сверху и снизу -->
-                <img src="photo_2026-08-21_16-08-44.jpg" alt="Loft Hall" class="location-img shadow-md" />
+            <div class="flex justify-center w-full max-w-xl mx-auto mt-4">
+                <img src="photo_2026-08-21_16-08-44.jpg" alt="Loft Hall" class="location-img" />
             </div>
             <div class="mt-4">
                 <a href="https://yandex.ru/maps/?text=Москва%202-й%20Кожуховский%20проезд%2029к6" target="_blank" class="map-btn" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200">
