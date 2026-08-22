@@ -177,10 +177,10 @@
             }
         }
 
-        /* --- Фото локации: ещё больше высоты! --- */
+        /* --- Фото локации: максимальная высота, полная ширина --- */
         .location-img {
             width: 100%;
-            max-height: 600px;          /* высота увеличена до 600px */
+            max-height: 750px;          /* ещё выше! */
             object-fit: cover;
             border-radius: 4px;
             border: 1px solid #d1cdc4;
@@ -189,12 +189,12 @@
         }
         @media (max-width: 768px) {
             .location-img {
-                max-height: 450px;
+                max-height: 550px;
             }
         }
         @media (max-width: 480px) {
             .location-img {
-                max-height: 300px;
+                max-height: 350px;
             }
         }
 
@@ -584,7 +584,8 @@
             <h2 class="section-title mb-4">Место проведения</h2>
             <p class="body-text text-lg">Loft Hall</p>
             <p class="body-text text-gray-600">Москва, 2-й Кожуховский проезд, 29к6</p>
-            <div class="flex justify-center w-full max-w-xl mx-auto mt-4">
+            <!-- Убрал max-w-xl, теперь фото на всю ширину -->
+            <div class="flex justify-center w-full mt-4">
                 <img src="photo_2026-08-21_16-08-44.jpg" alt="Loft Hall" class="location-img" />
             </div>
             <div class="mt-4">
