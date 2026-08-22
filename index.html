@@ -177,13 +177,12 @@
             }
         }
 
-        /* --- Фото локации: прямоугольное, обрезка снизу, верх виден --- */
+        /* --- Фото локации: полное отображение без обрезки, прямоугольное, ширина 100% --- */
         .location-img {
             width: 100%;
+            height: auto;
             max-height: 400px;
-            height: 100%;              /* чтобы заполнить контейнер */
-            object-fit: cover;
-            object-position: top center; /* обрезаем снизу, верх всегда виден */
+            object-fit: contain;      /* фото видно целиком, без обрезки */
             border-radius: 4px;
             margin-top: 1rem;
             display: block;
@@ -586,7 +585,7 @@
             <p class="body-text text-lg">Loft Hall</p>
             <p class="body-text text-gray-600">Москва, 2-й Кожуховский проезд, 29к6</p>
             <div class="flex justify-center w-full max-w-2xl mx-auto">
-                <!-- Фото теперь прямоугольное, верх не обрезается -->
+                <!-- Фото теперь отображается полностью, без обрезки сверху и снизу -->
                 <img src="photo_2026-08-21_16-08-44.jpg" alt="Loft Hall" class="location-img shadow-md" />
             </div>
             <div class="mt-4">
