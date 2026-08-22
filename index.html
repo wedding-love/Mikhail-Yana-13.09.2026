@@ -177,13 +177,13 @@
             }
         }
 
-        /* --- Фото локации: вертикальный прямоугольник, узкое и вытянутое --- */
+        /* --- Фото локации: чуть шире, пропорции 4:5 --- */
         .location-img {
             max-height: 400px;
             width: auto;
-            max-width: 70%;           /* уже, чем 100% */
-            aspect-ratio: 3 / 4;      /* высота больше ширины */
-            object-fit: cover;        /* обрезка по бокам, без искажений */
+            max-width: 75%;           /* чуть шире, чем 70% */
+            aspect-ratio: 4 / 5;      /* шире, чем 3/4 */
+            object-fit: cover;
             border-radius: 4px;
             margin-top: 1rem;
             display: block;
@@ -193,13 +193,13 @@
         @media (max-width: 768px) {
             .location-img {
                 max-height: 300px;
-                max-width: 80%;
+                max-width: 85%;
             }
         }
         @media (max-width: 480px) {
             .location-img {
                 max-height: 220px;
-                max-width: 90%;
+                max-width: 95%;
             }
         }
 
@@ -590,7 +590,7 @@
             <p class="body-text text-lg">Loft Hall</p>
             <p class="body-text text-gray-600">Москва, 2-й Кожуховский проезд, 29к6</p>
             <div class="flex justify-center w-full max-w-2xl mx-auto">
-                <!-- Фото теперь вертикальное, узкое, с обрезкой по бокам -->
+                <!-- Фото с новыми пропорциями 4:5, чуть шире -->
                 <img src="photo_2026-08-21_16-08-44.jpg" alt="Loft Hall" class="location-img shadow-md" />
             </div>
             <div class="mt-4">
